@@ -1,0 +1,12 @@
+{
+  "name": "personal-ai-core",
+  "version": "1.0.0",
+  "description": "Personal AI Core - Assistente Pessoal Modular",
+  "scripts": {
+    "doctor": "python scripts/doctor.py",
+    "dev:backend": "python app/main.py",
+    "dev:frontend": "cd web && npm run dev"
+  },
+  "author": "Luis Marquitti",
+  "license": "MIT"
+}
