@@ -1,4 +1,4 @@
 langgraph
 psycopg2-binary
-langchain-postgres
+langgraph-checkpoint-postgres
 python-dotenv
