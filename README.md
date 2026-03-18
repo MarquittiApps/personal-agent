@@ -82,6 +82,14 @@ We provide a built-in diagnostic script to ensure your environment is correctly 
    npm run dev
    ```
 
+## 📖 Documentation & Guides
+
+- **LLM Configuration:**
+  - [Gemini API Setup Guide](./doc/infra/gemini-setup.md)
+  - [Local LLM (Ollama) Setup Guide](./doc/infra/ollama-setup.md)
+- **Developer Tutorials:**
+  - [LLM Integration Tutorial](./doc/tutorials/llm-integration.md)
+
 ## 📖 Usage & Interfaces
 
 - **Web Dashboard:** Access `http://localhost:3000` (by default) to view your morning agenda, pending PR approvals, IoT Canvas, and DevOps board.
