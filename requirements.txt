@@ -2,3 +2,5 @@ langgraph
 psycopg2-binary
 langgraph-checkpoint-postgres
 python-dotenv
+fastapi
+uvicorn

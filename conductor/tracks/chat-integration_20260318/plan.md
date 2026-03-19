@@ -1,12 +1,12 @@
 # Implementation Plan: Integração Omnibar & LLM Chat
 
 ## Phase 1: Communication Infrastructure
-- [ ] Task: Configure WebSocket endpoint in backend.
-    - [ ] Create socket handler for LangGraph streaming events.
-    - [ ] Implement event routing logic.
-- [ ] Task: Set up chat state in frontend.
-    - [ ] Create `chatStore.ts` using Zustand.
-    - [ ] Implement WebSocket client connection hook.
+- [x] Task: Configure WebSocket endpoint in backend.
+    - [x] Create socket handler for LangGraph streaming events.
+    - [x] Implement event routing logic.
+- [x] Task: Set up chat state in frontend.
+    - [x] Create `chatStore.ts` using Zustand.
+    - [x] Implement WebSocket client connection hook.
 - [ ] Task: Conductor - User Manual Verification 'Phase 1: Connectivity' (Protocol in workflow.md)
 
 ## Phase 2: Core Messaging & Streaming
