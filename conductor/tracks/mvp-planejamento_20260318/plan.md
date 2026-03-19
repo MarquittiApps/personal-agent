@@ -28,8 +28,8 @@ LangGraph Tools de agenda governadas pelos tokens de acesso do usuário.
 
 ### Tasks
 
-- [ ] Task 2.1: Desenvolver a Tool para buscar compromissos do dia no Calendar.
-- [ ] Task 2.2: Desenvolver a Tool para buscar, criar e atualizar tarefas no Google Tasks.
+- [x] Task 2.1: Desenvolver a Tool para buscar compromissos do dia no Calendar.
+- [~] Task 2.2: Desenvolver a Tool para buscar, criar e atualizar tarefas no Google Tasks.
 - [ ] Task 2.3: Desenvolver a Tool para agendar eventos no Google Calendar.
 - [ ] Task 2.4: Atualizar o prompt do Agent para utilizar Tools e gerar insights de planejamento.
 
