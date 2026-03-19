@@ -7,6 +7,8 @@
 - **Supervisor (Meta-Agente):** Orquestração e auto-evolução.
 - **Daily Planner:** Gestão pessoal e tempo.
 - **Software Dev (ClinicCare):** Engenharia de software sênior.
+- **Knowledge Base (RAG):** Base de conhecimento técnica e normativa para suporte a decisões.
+- **IoT Hardware Catalog:** Gestão de dispositivos, protocolos e payloads inteligentes.
 - **Smart Home:** Projetos IoT e automação.
 - **Consultoria TI:** Backoffice e infraestrutura física.
 

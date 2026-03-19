@@ -8,8 +8,9 @@
 
 ## Backend & Agentics
 - **Framework:** LangGraph (Python/JS) com nodes determinísticos e reativos.
+- **RAG Engine:** LangChain (RecursiveCharacterTextSplitter, PyPDFLoader).
 - **LLMs:** Gemini 2.5 Pro (Multimodal), Ollama (Local).
-- **Database:** PostgreSQL com PostgresSaver (Memória Persistente).
+- **Database:** PostgreSQL (pg16) com pgvector e PostgresSaver (Memória Persistente).
 - **Streaming:** WebSockets para streaming de respostas.
 
 ## Integration
