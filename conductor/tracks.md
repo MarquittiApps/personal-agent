@@ -19,5 +19,10 @@ This file tracks all major tracks for the project. Each track has its own detail
 
 ---
 
-- [ ] **Track: LLM Configuration & Local Setup Documentation**
+- [x] **Track: LLM Configuration & Local Setup Documentation**
 *Link: [./tracks/llm-setup_20260318/](./tracks/llm-setup_20260318/)*
+
+---
+
+- [ ] **Track: Integração Omnibar & LLM Chat (WebSocket Streaming)**
+*Link: [./tracks/chat-integration_20260318/](./tracks/chat-integration_20260318/)*
