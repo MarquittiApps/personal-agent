@@ -41,12 +41,12 @@ Comunicação em tempo real entre o agente (backend) e a interface (Zustand).
 
 ### Tasks
 
-- [ ] Task 3.1: Configurar no backend a emissão de um evento WebSocket específico (ex: `DASHBOARD_UPDATE`) contendo a estrutura (JSON) do planejamento de forma segura.
-- [ ] Task 3.2: Configurar no frontend (`web/src/lib/useSocket.ts`) um listener para o evento `DASHBOARD_UPDATE`, disparando o payload formatado diretamente na *store* do Zustand para atualizar a UI instantaneamente.
+- [x] Task 3.1: Configurar no backend a emissão de um evento WebSocket específico (ex: `DASHBOARD_UPDATE`) contendo a estrutura (JSON) do planejamento de forma segura.
+- [x] Task 3.2: Configurar no frontend (`web/src/lib/useSocket.ts`) um listener para o evento `DASHBOARD_UPDATE`, disparando o payload formatado diretamente na *store* do Zustand para atualizar a UI instantaneamente.
 
 ### Verification
 
-- [ ] Websocket recebe o payload e atualiza o Zustand ativando a re-renderização das camadas visualmente.
+- [x] Websocket recebe o payload e atualiza o Zustand ativando a re-renderização das camadas visualmente.
 
 ## Phase 4: Testes e Polimento
 
