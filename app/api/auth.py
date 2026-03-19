@@ -51,6 +51,9 @@ def init_db():
     cur.close()
     conn.close()
 
+# Dicionário temporário para manter o code_verifier do PKCE (válido para 1 worker em ambiente dev)
+oauth_states = {}
+
 @router.get("/google")
 def login_google():
     try:
@@ -66,6 +69,11 @@ def login_google():
             include_granted_scopes='true',
             prompt='consent'
         )
+        
+        # Salva o code_verifier do fluxo associado ao state gerado
+        if hasattr(flow, 'code_verifier'):
+            oauth_states[state] = flow.code_verifier
+            
         return RedirectResponse(authorization_url)
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -84,6 +92,10 @@ def callback_google(request: Request):
             client_config, scopes=SCOPES, state=state
         )
         flow.redirect_uri = REDIRECT_URI
+        
+        # Restaura o code_verifier gerado no step de login
+        if state in oauth_states:
+            flow.code_verifier = oauth_states.pop(state)
         
         # Converte em URL http por conta do Insecure Transport em prod deverá ser https
         authorization_response = str(request.url)

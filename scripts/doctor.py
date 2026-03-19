@@ -112,6 +112,15 @@ def check_service_port(port, service_name, suggestion=None):
             return True
         except (socket.timeout, ConnectionRefusedError):
             print_error(f"Serviço {service_name} não encontrado na porta {port}.", suggestion)
+            # Tenta subir via docker compose se for o postgres
+            if port == 5432:
+                print_step("Tentando iniciar o banco de dados via Docker Compose...")
+                try:
+                    subprocess.run(["docker", "compose", "up", "-d"], check=True)
+                    print_ok("Docker Compose iniciado com sucesso.")
+                    return True
+                except Exception as e:
+                    print_error("Falha ao iniciar via Docker Compose.", "Certifique-se que o Docker está instalado e em execução no seu sistema.")
             return False
 
 def check_ollama_health():

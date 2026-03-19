@@ -9,7 +9,12 @@ export const useSocket = () => {
   const streamingIdRef = useRef<string | null>(null);
 
   const connect = useCallback(() => {
-    if (socketRef.current?.readyState === WebSocket.OPEN) return;
+    if (
+      socketRef.current?.readyState === WebSocket.OPEN ||
+      socketRef.current?.readyState === WebSocket.CONNECTING
+    ) {
+      return;
+    }
 
     const socket = new WebSocket(WS_URL);
     socketRef.current = socket;
@@ -52,7 +57,9 @@ export const useSocket = () => {
 
     socket.onclose = () => {
       console.log('WebSocket Disconnected');
-      socketRef.current = null;
+      if (socketRef.current === socket) {
+        socketRef.current = null;
+      }
     };
 
     socket.onerror = (error) => {

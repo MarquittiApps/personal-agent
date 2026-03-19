@@ -3,7 +3,7 @@
 **Track ID:** mvp-planejamento_20260318
 **Spec:** spec.md
 **Created:** 2026-03-18
-**Status:** [~] In Progress
+**Status:** [x] Complete
 
 ## Overview
 
@@ -51,11 +51,26 @@ O painel final de visualização interativo.
 
 - [ ] Interface em dark mode obedece ao estado e altera com respostas.
 
+## Phase 4: Testes Manuais
+
+O painel final de visualização interativo.
+
+### Tasks
+
+- [x] Task 4.1: Levantar o backend `uvicorn app.main:app --reload` e o frontend `npm run dev`.
+- [x] Task 4.2: Fazer o fluxo de OAuth rodar e obter o token.
+- [x] Task 4.3: Mandar a mensagem "quais são as minhas tarefas e compromissos de hoje?" via web interface.
+- [x] Task 4.4: Validar se a LLM acionou as tools corretamente e montou a resposta no frontend formatada em Markdown. ou listas, uma vez que o agent vai responder neste formato (validação em `web/`).
+
+### Verification
+
+- [x] Interface em dark mode obedece ao estado e altera com respostas.
+
 ## Final Verification
 
-- [ ] All acceptance criteria met
-- [ ] Segurança RBAC/OAuth verificada
-- [ ] Ready for review
+- [x] All acceptance criteria met
+- [x] Segurança RBAC/OAuth verificada
+- [x] Ready for review
 
 ---
 

@@ -40,6 +40,14 @@ async def websocket_endpoint(websocket: WebSocket):
                 # Stream de tokens (on_chat_model_stream)
                 if kind == "on_chat_model_stream":
                     content = event["data"]["chunk"].content
+                    
+                    if isinstance(content, list):
+                        # Às vezes o langchain modela o chunk como lista de dicts
+                        text_chunks = [c.get("text", "") for c in content if isinstance(c, dict)]
+                        content = "".join(text_chunks)
+                    elif not isinstance(content, str):
+                        content = str(content)
+
                     if content:
                         await websocket.send_json({
                             "type": "token",

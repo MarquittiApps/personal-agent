@@ -28,11 +28,11 @@ def get_graph_builder(use_persistence=True):
         try:
             db_url = f"postgresql://{os.getenv('DB_USER')}:{os.getenv('DB_PASSWORD')}@{os.getenv('DB_HOST')}:{os.getenv('DB_PORT')}/{os.getenv('DB_NAME')}"
             checkpointer = PostgresSaver.from_conn_string(db_url)
-            return create_react_agent(llm, tools, state_modifier=system_prompt, checkpointer=checkpointer)
+            return create_react_agent(llm, tools, prompt=system_prompt, checkpointer=checkpointer)
         except Exception as e:
             print(f"Postgres checkpointer failure: {e}. Using no persistence.")
             
-    return create_react_agent(llm, tools, state_modifier=system_prompt)
+    return create_react_agent(llm, tools, prompt=system_prompt)
 
 def compile_graph(use_persistence=True):
     return get_graph_builder(use_persistence)
