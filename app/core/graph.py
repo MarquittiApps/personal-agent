@@ -1,8 +1,9 @@
 import os
 from langgraph.checkpoint.postgres import PostgresSaver
 from langgraph.prebuilt import create_react_agent
-from langchain_google_genai import ChatGoogleGenerativeAI
 from dotenv import load_dotenv
+
+from app.core.llm_factory import get_llm
 
 from app.tools.google_calendar import get_todays_calendar_events, create_calendar_event
 from app.tools.google_tasks import get_pending_tasks, create_google_task
@@ -32,7 +33,7 @@ Após qualquer interação sobre planejamento, agenda ou tarefas, você DEVE avi
 Organize suas respostas usando markdown claro e conciso."""
 
 def get_graph_builder(use_persistence=True):
-    llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash", temperature=0.2)
+    llm = get_llm()
     tools = [
         get_todays_calendar_events,
         create_calendar_event,
