@@ -8,6 +8,7 @@ from app.core.llm_factory import get_llm
 from app.tools.google_calendar import get_todays_calendar_events, create_calendar_event
 from app.tools.google_tasks import get_pending_tasks, create_google_task
 from app.tools.dashboard_sync import update_planning_dashboard
+from app.tools.rag_engine import query_knowledge_base
 
 load_dotenv()
 
@@ -39,7 +40,8 @@ def get_graph_builder(use_persistence=True):
         create_calendar_event,
         get_pending_tasks,
         create_google_task,
-        update_planning_dashboard
+        update_planning_dashboard,
+        query_knowledge_base
     ]
     
     if use_persistence:
