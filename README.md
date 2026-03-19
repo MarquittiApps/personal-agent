@@ -88,7 +88,7 @@ We provide a built-in diagnostic script to ensure your environment is correctly 
   - [Gemini API Setup Guide](./doc/infra/gemini-setup.md)
   - [Local LLM (Ollama) Setup Guide](./doc/infra/ollama-setup.md)
 - **Developer Tutorials:**
-  - [LLM Integration Tutorial](./doc/tutorials/llm-integration.md)
+  - [LLM Integration Tutorial](./doc/infra/ollama-setup.md)
 
 ## 📖 Usage & Interfaces
 
