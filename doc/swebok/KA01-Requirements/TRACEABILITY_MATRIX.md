@@ -1,29 +1,22 @@
-# Requirements Traceability Matrix
+# Traceability Matrix — KA01
 
-> **Version:** 1.0  
-> **Last Updated:** 2026-03-19  
-> **Governed by:** SWEBOK v4 — KA 01 (Software Requirements)
+This matrix maps Software Requirements (REQ) to their corresponding implementation in the codebase and architectural components.
 
----
+| Requirement ID | Component / Module | Implementation Path | Status |
+|----------------|--------------------|---------------------|--------|
+| **REQ-001** | Backend Core | `app/main.py` | ✅ Verified |
+| **REQ-002** | Reasoning Engine | `app/core/graph.py` | ✅ Verified |
+| **REQ-003** | RAG Engine | `app/core/rag_engine.py` | ✅ Verified |
+| **REQ-004** | Tool Registry | `app/tools/` | ✅ Verified |
+| **REQ-010** | Web Frontend | `web/src/` | 🔄 In Progress |
+| **REQ-011** | Omnibar | `web/src/components/Omnibar.tsx` | ✅ Verified |
+| **REQ-020** | Google Calendar | `app/tools/google_calendar.py` | ✅ Verified |
+| **REQ-021** | Google Tasks | `app/tools/google_tasks.py` | ✅ Verified |
+| **REQ-090** | Governance | `CONSTITUTION.md` | 🔄 In Progress |
+| **REQ-091** | Rules | `.agents/rules/no-vibe-coding.md` | 🔄 In Progress |
+| **REQ-201** | Security | `docker-compose.yml` (Volume encryption) | ✅ Verified |
 
-## Purpose
-
-This matrix maps each requirement (REQ-NNN) to its implementation artifacts (code files, tests, specs) ensuring full traceability from intent to code.
-
-## Matrix
-
-| REQ ID | Description | Epic | Implementation File(s) | Test File(s) | Status |
-|--------|------------|------|----------------------|--------------|--------|
-| REQ-001 | FastAPI backend with WebSocket | EP-01 | `app/main.py` | `tests/` | ✅ Implemented |
-| REQ-002 | PostgreSQL with pgvector | EP-01 | `app/core/database.py` | — | ✅ Implemented |
-| REQ-003 | LangGraph multi-agent orchestration | EP-01 | `app/core/graph.py` | — | ✅ Implemented |
-| REQ-004 | Local LLM via Ollama | EP-01 | `app/core/llm_factory.py` | — | 📋 Backlog |
-| REQ-010 | React web app with auth | EP-02 | `web/` | — | 🔄 In Progress |
-| REQ-011 | Omnibar for commands | EP-02 | `web/` | — | ✅ Implemented |
-| REQ-020 | Google Calendar integration | EP-07 | `app/tools/` | — | ✅ Implemented |
-| REQ-021 | Google Tasks integration | EP-07 | `app/tools/` | — | ✅ Implemented |
-| REQ-090 | Living CONSTITUTION.md | EP-09 | `doc/swebok/KA09-Process/CONSTITUTION.md` | — | ✅ Implemented |
-
----
-
-> **Note:** This matrix will be retroactively populated with full file paths and test references in Sprint 3 (T3.2).
+## Traceability Audit Protocol
+1. New requirements must be added to `SRS.md` first.
+2. The implementation path must be updated in this matrix upon completion.
+3. Every commit should reference the REQ-ID to maintain the audit trail.

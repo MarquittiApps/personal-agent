@@ -23,10 +23,10 @@ The system is organized into 6 functional modules led by a Supervisor Agent:
 ```
 
 **Key Components:**
-- **Reasoning Engine:** LangGraph graph with state management and tool calling
-- **Tool Registry:** Modular tool definitions in `app/tools/`
-- **RAG Engine:** Vector search via pgvector in `app/core/rag_engine.py`
-- **LLM Factory:** Model-agnostic interface in `app/core/llm_factory.py`
+- **Reasoning Engine:** LangGraph graph with state management and tool calling.
+- **Memory Controller:** Modular unit for vector storage/retrieval with access abstraction.
+- **Tool Registry:** Standardized interfaces (Abstract API Wrappers) for external APIs.
+- **LLM Factory:** Model-agnostic interface supporting both cloud (Gemini) and local (Ollama).
 
 ## 2. Process View
 
@@ -48,7 +48,9 @@ User Input (WebSocket/Chat)
               └─────────┘ └───────┘ └──────────┘
 ```
 
-**Concurrency:** Async event loop (FastAPI/uvicorn) handles WebSocket connections. LangGraph manages agent state transitions with Human-in-the-Loop interrupts.
+**Concurrency:** Async event loop (FastAPI/uvicorn) handles WebSocket connections. 
+**Fault Tolerance:** Write-Ahead Logging (WAL) mechanism for persistence.
+**Safety:** Interrupt Service Routines for high-priority user commands (e.g., "Stop").
 
 ## 3. Development View
 

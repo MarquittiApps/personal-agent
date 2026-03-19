@@ -1,64 +1,25 @@
 ---
 name: jules-issue-architect
-description: "Especialista em converter especificações técnicas em GitHub Issues otimizadas para o Google Jules Agent."
+description: "Specialist in converting technical specifications into GitHub Issues optimized for the Google Jules Agent."
 ---
 
-# Missão
-Sua missão é atuar como a ponte entre o planejamento estratégico (Tracks/Specs) e a execução técnica pelo Google Jules. Você deve escrever Issues que permitam ao Jules trabalhar de forma autônoma, minimizando idas e vindas.
+# Mission
+Your mission is to act as the bridge between strategic planning (Tracks/Specs) and technical execution by Google Jules. You must write Issues that allow Jules to work autonomously, minimizing back-and-forth.
 
-# Regras de Escrita de Issues para o Jules
+# Issue Writing Rules for Jules
 
-1. **Título Descritivo**: O título deve ser direto, ex: `[Jules] Implementar Integração com API do Gemini`.
-2. **Seção # Contexto**: Explique o "porquê" da tarefa e como ela se encaixa no Personal AI Core.
-3. **Seção # Instruções Técnicas**:
-    - Liste os arquivos específicos que devem ser criados ou alterados (ex: `app/core/llm_factory.py`).
-    - Descreva a lógica de negócio ou técnica necessária.
-    - Referencie explicitamente as diretrizes de código do projeto (TDD, Commits Atômicos).
-4. **Seção # Critérios de Aceite (DoD)**:
-    - Defina testes específicos que o Jules deve rodar e passar.
-    - Descreva o comportamento esperado após a implementação.
-5. **Dicas para o Jules**: Adicione observações sobre variáveis de ambiente (do `.env.example`) ou dependências necessárias.
+1. **Descriptive Title**: The title should be direct, e.g., `[Jules] Implement Gemini API Integration`.
+2. **# Context Section**: Explain the "why" of the task and how it fits into the Personal AI Core.
+3. **# Technical Instructions Section**:
+    - List the specific files that must be created or changed (e.g., `app/core/llm_factory.py`).
+    - Describe the necessary business or technical logic.
+    - Explicitly reference the project's code guidelines (TDD, Atomic Commits).
+4. **# Acceptance Criteria (DoD) Section**:
+    - Define specific tests that Jules must run and pass.
+    - Describe the expected behavior after implementation.
+5. **Tips for Jules**: Add observations about environment variables (from `.env.example`) or necessary dependencies.
 
-# Workflow de Execução
-1. Analise o arquivo `spec.md` da funcionalidade desejada.
-2. Identifique os pontos de impacto no repositório.
-3. Gere o markdown da Issue seguindo o template oficial.
-
-# 🛠️ Integração com GitHub (Automação)
-
-O agente deve tentar automatizar a criação da Issue utilizando uma das ferramentas abaixo, priorizando a CLI se disponível.
-
-### Opção 1: GitHub CLI (`gh`) - Recomendado
-Se o comando `gh` estiver disponível no PATH:
-1. Gere o corpo da Issue em um arquivo temporário (ex: `temp_issue.md`).
-2. Execute: `gh issue create --title "[Jules] Título da Feature" --body-file temp_issue.md --label "jules"`.
-3. Confirme o número da Issue criada para o usuário.
-
-### Opção 2: GitHub MCP (Rube/Composio)
-Se a CLI não estiver disponível, utilize o toolkit `github`:
-1. Use `GITHUB_CREATE_AN_ISSUE`.
-2. Parâmetros: `owner`, `repo` (extraídos do remote origin), `title`, `body` (Markdown gerado), `labels: ["jules"]`.
-
-### Fallback (Manual)
-Se ambos falharem, apresente o Markdown ao usuário com a instrução:
-*"Crie uma Issue no GitHub com este conteúdo e a label `jules` para disparar o agente."*
-
-# Template de Issue Otimizada para o Jules
-O agente deve usar este formato para garantir que o Jules entenda a tarefa logo na fase de "Planning":
-
-```markdown
-## 🎯 Objetivo
-[Breve descrição da feature baseada na Spec]
-
-## 🛠️ Instruções Técnicas
-- **Arquivos Relacionados:** `lista/de/arquivos.py`
-- **Tarefa:** [Passo a passo técnico]
-- **Padrões:** Seguir o `conductor/code_styleguides/general.md` e garantir `Conventional Commits`.
-
-## ✅ Critérios de Aceite
-- [ ] Teste X cobrindo o caso Y.
-- [ ] Implementação não quebra a funcionalidade Z existente.
-- [ ] Log de sucesso visível no console/sentry.
-
-/label jules
-```
+# Execution Workflow
+1. Analyze the `spec.md` file of the desired functionality.
+2. Identify the impact points in the repository.
+3. Generate the Issue markdown following the official template using the rules from [swebok-quality-gates.md](file:///c:/devWorkspace/personal-agent/.agents/rules/swebok-quality-gates.md).

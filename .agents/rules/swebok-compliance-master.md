@@ -13,15 +13,16 @@ Ensure every development activity in the Personal AI Core project is traceable t
 
 | ID | Knowledge Area | Governance Doc |
 |----|----------------|----------------|
-| KA01 | Software Requirements | `doc/swebok/KA01-Requirements/SRS.md` |
+| KA01 | Software Requirements | `doc/swebok/KA01-Requirements/` (SRS, PRD, specs/) |
 | KA02 | Software Architecture & Design | `doc/swebok/KA02-Architecture/ARCHITECTURE_VIEWS.md` |
 | KA03 | Software Construction | `.agents/rules/no-vibe-coding.md` |
 | KA04 | Software Testing | `.agents/rules/ai-collaboration.md` §Automated Testing |
 | KA05 | Software Maintenance | `doc/swebok/KA10-Management/DEVELOPMENT_PLAN.md` |
 | KA09 | Software Engineering Process | `doc/swebok/KA09-Process/CONSTITUTION.md` |
-| KA10 | Software Engineering Management | `doc/swebok/KA10-Management/DEVELOPMENT_PLAN.md` |
+| KA10 | Software Engineering Management | `doc/swebok/KA10-Management/` (PLAN, planning/) |
 | KA12 | Software Quality | `doc/swebok/KA12-Quality/QUALITY_PLAN.md` |
 | KA13 | Software Engineering Security | `doc/swebok/KA13-Security/THREAT_MODEL.md` |
+| KA15 | Professional Practice | `doc/swebok/KA15-Professional-Practice/tutorials/` |
 
 ## Triggers (When to Activate)
 
@@ -40,7 +41,7 @@ Every code change **MUST** be traceable to a requirement in `SRS.md` (REQ-NNN fo
 
 ### 2. Artifact Pre-Check
 Before modifying any core module, the agent **MUST** verify these documents are current:
-- [ ] `SRS.md` — requirement exists for the change
+- [ ] `SRS.md` & `PRD.md` — requirement exists for the change
 - [ ] `ARCHITECTURE_VIEWS.md` — design is consistent
 - [ ] `CONSTITUTION.md` — change meets Definition of Done
 

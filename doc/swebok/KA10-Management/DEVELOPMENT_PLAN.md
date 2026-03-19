@@ -8,7 +8,7 @@
 
 ## 1. Project Overview
 
-The Personal AI Core is a modular AI ecosystem designed to act as a professional co-pilot in engineering, IT, and personal management. See [PRD.md](file:///c:/devWorkspace/personal-agent/PRD.md) for complete product vision.
+The Personal AI Core is a modular AI ecosystem designed to act as a professional co-pilot in engineering, IT, and personal management. See [PRD.md](../KA01-Requirements/PRD.md) for complete product vision.
 
 ## 2. Epic Registry
 
@@ -24,17 +24,18 @@ The Personal AI Core is a modular AI ecosystem designed to act as a professional
 | EP-08 | RAG Knowledge Base & Catalogs | 📋 Backlog | Phase 2 | Vector DB for technical standards (NBRs), IoT catalog |
 | **EP-09** | **SWEBOK v4 Governance Integration** | **🔄 In Progress** | **Phase 1** | **Engineering governance framework, living documentation, quality gates** |
 
-## 3. Current Sprint: Sprint 0 — SWEBOK Foundation
+## 3. Sprint 3 — Integration & Retroactive Documentation ✅
 
-**Goal:** Establish the SWEBOK governance directory structure and bootstrap documents.
+**Goal:** Integrate legacy knowledge and populate all SWEBOK KAs.
 
 | Task | Status | Assignee | Deliverable |
 |------|--------|----------|-------------|
-| T0.1 Create `doc/swebok/` directory structure | 🔄 In Progress | Agent | Directory scaffold |
-| T0.2 Write `CONSTITUTION.md` | 🔄 In Progress | Agent | `KA09-Process/CONSTITUTION.md` |
-| T0.3 Write `DEVELOPMENT_PLAN.md` | 🔄 In Progress | Agent | `KA10-Management/DEVELOPMENT_PLAN.md` |
-| T0.4 Create `SRS.md` template | ⬜ Pending | Agent | `KA01-Requirements/SRS.md` |
-| T0.5 Register EP-09 in EPICOS.md & BACKLOG.md | ⬜ Pending | Agent | Updated planning docs |
+| T3.1 Populate SRS with requirements audit | ✅ Done | Agent | `SRS.md` |
+| T3.2 Build traceability matrix from code | ✅ Done | Agent | `TRACEABILITY_MATRIX.md` |
+| T3.3 Complete threat model with STRIDE | ✅ Done | Agent | `THREAT_MODEL.md` |
+| T3.4 Fill quality plan with metrics | ✅ Done | Agent | `QUALITY_PLAN.md` |
+| T3.5 Migrate/consolidate legacy docs | ✅ Done | Agent | Skill/Env integrated |
+| T3.6 Remove retired duplicates | ✅ Done | Agent | Cleaned `doc/` |
 
 ## 4. Milestones
 
@@ -62,6 +63,5 @@ The Personal AI Core is a modular AI ecosystem designed to act as a professional
 | TD-02 | No traceability matrix linking REQs to code | Medium | EP-09 | Open — Sprint 3 |
 | TD-03 | No formal threat model | High | EP-09 | Open — Sprint 3 |
 
----
-
-> **Governance:** This document is updated by agents after each merge via the `swebok-governance.workflow.md` Doc-Sync step. Manual updates are allowed for milestone adjustments.
+- **Deployment:** Implement project documentation sharing via GitHub Pages using MkDocs. Refer to [EPICOS.md](planning/EPICOS.md) and [BACKLOG.md](planning/BACKLOG.md).
+- **Workflow:** Create an automated GitHub Issue Management workflow to coordinate between Planning and Execution.
