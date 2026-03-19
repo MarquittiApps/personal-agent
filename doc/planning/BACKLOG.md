@@ -12,3 +12,4 @@
 | **EP-06** | [Meta-Agent (Self-Evolution)](epics/meta-agent/FEATURE.md) | 📋 Backlog | 2026-03-18 |
 | **EP-07** | [Daily Planning MVP with AI](epics/mvp-planning/FEATURE.md) | ✅ Done | 2026-03-18 |
 | **EP-01** | [Local LLM Integration (Ollama)](epics/foundation/FEATURE-llm-local.md) | 📋 Backlog | 2026-03-19 |
+| **EP-09** | [SWEBOK v4 Governance — Sprint 0 (Foundation)](../../specs/swebok-governance/SPEC.md) | 🔄 In Progress | 2026-03-19 |
