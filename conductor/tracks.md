@@ -24,5 +24,5 @@ This file tracks all major tracks for the project. Each track has its own detail
 
 ---
 
-- [ ] **Track: Integração Omnibar & LLM Chat (WebSocket Streaming)**
+- [~] **Track: Integração Omnibar & LLM Chat (WebSocket Streaming)**
 *Link: [./tracks/chat-integration_20260318/](./tracks/chat-integration_20260318/)*
