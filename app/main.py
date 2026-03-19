@@ -1,4 +1,5 @@
 import json
+import ast
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect
 from app.core.graph import compile_graph
 from app.api.auth import router as auth_router
@@ -85,10 +86,8 @@ async def websocket_endpoint(websocket: WebSocket):
                             print(f"DEBUG: content_str = {repr(content_str)}")
                             
                             # Tenta json.loads primeiro (JSON padrão com aspas duplas)
-                            import json as _json
-                            import ast
                             try:
-                                output_dict = _json.loads(content_str)
+                                output_dict = json.loads(content_str)
                             except Exception:
                                 try:
                                     # fallback: ast.literal_eval para dict Python com aspas simples
