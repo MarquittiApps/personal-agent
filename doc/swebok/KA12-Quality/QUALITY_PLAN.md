@@ -1,52 +1,23 @@
-# Quality Plan — Personal AI Core
+# Software Quality Plan — KA12
 
-> **Version:** 1.0  
-> **Last Updated:** 2026-03-19  
-> **Governed by:** SWEBOK v4 — KA 12 (Software Quality)
+Governed by SWEBOK v4 — KA 12 (Software Quality). This plan defines the metrics and verification procedures to ensure the Personal AI Core meets its QoS requirements.
 
----
+## 1. Quality Metrics
 
-## 1. Quality Objectives
+| ID | Metric | Target | Verification Method |
+|----|--------|--------|---------------------|
+| M-001 | Latency per Token | ≤ 50ms | Performance profiling on local hardware. |
+| M-002 | Hallucination Rate | < 1% | Evaluation against "Golden Set" of 500 prompts. |
+| M-003 | Test Coverage | ≥ 80% | Automated coverage reports (pytest-cov). |
+| M-004 | Security Score | 0 High Vulnerabilities | Static analysis (Bandit) + Dependency Audit. |
 
-| Objective | Target | Measurement |
-|-----------|--------|-------------|
-| Code Coverage (new code) | ≥ 80% | `pytest --cov` / `vitest --coverage` |
-| Critical Lint Errors | 0 | `ruff check` / `eslint` |
-| Security Vulnerabilities (High/Critical) | 0 | `pip-audit` / `npm audit` |
-| Documentation Currency | All active epics documented in SRS | Manual review |
-| Requirement Traceability | Every commit links to REQ-NNN | Git log audit |
+## 2. Quality Gates (Ref: swebok-quality-gates.md)
+We enforce a 5-phase quality gate system:
+1. **Pre-Flight:** Compliance with `no-vibe-coding`.
+2. **Structural:** Linting and type checks (MyPy).
+3. **Logic:** Unit and Integration tests.
+4. **Behavioral:** Manual/Agentic walkthrough against SRS.
+5. **Release:** Governance sign-off by `swebok-compliance-master`.
 
-## 2. Quality Activities
-
-| Activity | Frequency | Owner | KA |
-|----------|-----------|-------|-----|
-| Unit Testing | Every commit | Developer Agent | KA 05 |
-| Code Review | Every PR | Review Agent | KA 12 |
-| Security Audit | Per sprint | Security Agent | KA 13 |
-| Architecture Review | Per epic | Architect Agent | KA 02 |
-| DoD Verification | Task completion | QA Agent | KA 09 |
-
-## 3. Quality Gates
-
-Pre-merge checklist (enforced by `swebok-quality-gates.md` rule):
-- [ ] All tests pass
-- [ ] Coverage threshold met
-- [ ] No critical linter warnings
-- [ ] ADR exists for new architecture patterns
-- [ ] Security checklist completed for data-handling changes
-- [ ] Documentation updated
-
-## 4. Metrics Baseline
-
-> **Note:** Baseline metrics will be established during Sprint 3 (Task T3.4).
-
-| Metric | Current Value | Target |
-|--------|--------------|--------|
-| Backend test coverage | TBD | ≥ 80% |
-| Frontend test coverage | TBD | ≥ 80% |
-| Open technical debt items | 3 | < 5 |
-| SRS completeness | ~40% | 100% |
-
----
-
-> **Governance:** Updated quarterly or when quality objectives change via ADR process.
+## 3. Continuous Improvement
+Quality results from each sprint are analyzed to refine system prompts and tool interfaces, aiming for a "Diamond" quality standard.

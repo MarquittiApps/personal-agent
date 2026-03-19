@@ -1,59 +1,28 @@
-# Threat Model — Personal AI Core
+# Threat Model — KA13
 
-> **Version:** 1.0  
-> **Last Updated:** 2026-03-19  
-> **Governed by:** SWEBOK v4 — KA 13 (Software Security)
+This document identifies security threats to the Personal AI Core using the **STRIDE** methodology, as governed by SWEBOK v4 KA 13 (Software Security).
 
----
+## 1. Asset Definitions
+- **User Data:** Interaction history, preferences, and semantic memory (Local DB).
+- **Credentials:** API keys (Gemini, Google) and OAuth tokens.
+- **System Config:** System prompts, governance rules, and `.env` files.
 
-## 1. System Overview
+## 2. STRIDE Analysis
 
-The Personal AI Core is an agent-based system that handles:
-- User credentials (Google OAuth tokens)
-- Personal calendar and task data
-- Professional project information
-- LLM interactions (prompts containing sensitive context)
+| Threat Category | Threat Description | Mitigation Strategy |
+|-----------------|--------------------|---------------------|
+| **Spoofing** | Unauthorized access to the local FastAPI or WebSocket server. | Implement local-only binding (localhost) and session tokens. |
+| **Tampering** | **Prompt Injection:** An attacker (via untrusted input) tricks the LLM into bypassing safety rules. | Strict constitutional guardrails and output sanitization for tool calls. |
+| **Repudiation** | An autonomous agent performs an action without a traceable audit log. | Mandatory structured logging of all agent thoughts and tool executions. |
+| **Info Disclosure** | Leakage of private interaction history to third-party LLM providers. | **Local-First:** Keep sensitive context in local memory; use scrubbing for cloud inference. |
+| **Denial of Service** | Infinite loops in reasoning consumes local CPU/RAM or exceeds API quotas. | Implement execution timeouts and "Operational Watchdog" interrupts. |
+| **Elevation of Priv.** | Agent executes unauthorized system commands via a compromised tool registry. | Principle of Least Privilege: Tools bound to restricted scopes and verified inputs. |
 
-## 2. Trust Boundaries
+## 3. Trust Boundaries
+- **Boundary A:** User Browser <-> Backend (WebSocket).
+- **Boundary B:** Backend <-> External APIs (Gemini, Google).
+- **Boundary C:** Backend <-> Local Storage (PostgreSQL).
 
-```
-┌─────────────────────────────────────────┐
-│         Trusted Zone (Local)            │
-│  ┌──────────┐  ┌──────────┐ ┌────────┐ │
-│  │ FastAPI   │  │PostgreSQL│ │ Ollama │ │
-│  │ Backend   │  │ (Docker) │ │ (LLM)  │ │
-│  └──────────┘  └──────────┘ └────────┘ │
-└───────────┬─────────────────────────────┘
-            │ Trust Boundary
-┌───────────▼─────────────────────────────┐
-│        Untrusted Zone (External)        │
-│  ┌──────────┐  ┌──────────┐ ┌────────┐ │
-│  │ Gemini   │  │ Google   │ │ GitHub │ │
-│  │ API      │  │ Cal/Tasks│ │ API    │ │
-│  └──────────┘  └──────────┘ └────────┘ │
-└─────────────────────────────────────────┘
-```
-
-## 3. Threat Registry
-
-| ID | Threat | Vector | Impact | Likelihood | Mitigation | Status |
-|----|--------|--------|--------|-----------|------------|--------|
-| TH-01 | Prompt Injection | Malicious user input manipulates LLM behavior | High | Medium | Input sanitization + system prompt hardening | Open |
-| TH-02 | Credential Exposure | OAuth tokens leaked via logs or LLM context | Critical | Low | Token encryption (`app/core/crypto.py`) + log scrubbing | Mitigated |
-| TH-03 | Insecure Output Handling | LLM generates malicious tool calls | High | Medium | Tool call validation + allowlist enforcement | Open |
-| TH-04 | Database Injection | SQL injection via unsanitized queries | High | Low | Parameterized queries (SQLAlchemy) | Mitigated |
-| TH-05 | Dependency Vulnerability | Known CVE in third-party packages | Medium | Medium | Regular `pip-audit` / `npm audit` in CI | Open |
-
-## 4. Security Controls
-
-| Control | Implementation | Status |
-|---------|---------------|--------|
-| Token Encryption | `app/core/crypto.py` (AES-256) | ✅ Active |
-| OAuth Flow | `app/core/google_auth.py` | ✅ Active |
-| Environment Variables | `.env` file (gitignored) | ✅ Active |
-| Input Validation | Pydantic v2 models | ✅ Active |
-| Prompt Injection Defense | System prompt hardening | 📋 Pending (Sprint 3) |
-
----
-
-> **Note:** Full threat model elaboration is scheduled for Sprint 3 (Task T3.3). This seed document establishes the framework.
+## 4. Security Requirements (Ref: SRS REQ-004, REQ-201)
+- All interaction history must be encrypted at rest (AES-256).
+- Use `no-vibe-coding` to ensure every new tool is security-audited.

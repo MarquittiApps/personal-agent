@@ -14,7 +14,7 @@
 This SRS defines the functional and non-functional requirements for the Personal AI Core system. It serves as the single source of truth for requirements, from which all specifications, tasks, and acceptance criteria are derived.
 
 ### 1.2 Scope
-The Personal AI Core is a modular AI ecosystem with 6 main modules (see PRD Section 5), a React web interface, and LangGraph-based agent orchestration. This SRS covers all user-facing and system-level requirements.
+The Personal AI Core is a modular AI ecosystem with 6 main modules (see [PRD.md](PRD.md)), a React web interface, and LangGraph-based agent orchestration. This SRS covers all user-facing and system-level requirements.
 
 ### 1.3 Definitions & Acronyms
 
@@ -80,31 +80,31 @@ The Personal AI Core is a modular AI ecosystem with 6 main modules (see PRD Sect
 
 ### 2.2 Non-Functional Requirements (Quality of Service)
 
-| ID | Category | Requirement | Target |
-|----|----------|------------|--------|
-| QoS-001 | Performance | Backend API response time | ≤ 200ms (p95) for non-LLM endpoints |
-| QoS-002 | Performance | Local LLM latency per token | ≤ 50ms |
-| QoS-003 | Reliability | LLM hallucination rate for data retrieval | < 1% across validation test set |
-| QoS-004 | Security | Local-first data storage for sensitive user data | AES-256 encrypted local volumes |
-| QoS-005 | Availability | Web dashboard uptime | ≥ 99% during development phase |
-| QoS-006 | Maintainability | Test coverage for new code | ≥ 80% |
+| ID | Category | Requirement | Target | Status |
+|----|----------|------------|--------|--------|
+| QoS-001 | Performance | Backend API response time | ≤ 200ms (p95) for non-LLM endpoints | Implemented |
+| QoS-002 | Performance | Local LLM latency per token | ≤ 50ms | Proposed |
+| QoS-003 | Reliability | LLM hallucination rate for data retrieval | < 1% across validation test set | Proposed |
+| QoS-004 | Security | Local-first data storage for sensitive user data | AES-256 encrypted local volumes | Implemented |
+| QoS-005 | Availability | Web dashboard uptime | ≥ 99% during development phase | Implemented |
+| QoS-006 | Maintainability | Test coverage for new code | ≥ 80% | In Progress |
 
 ### 2.3 Technical Constraints
 
 | ID | Constraint | Justification |
 |----|-----------|---------------|
-| TC-001 | Backend must use Python 3.12+ with FastAPI | Established tech stack (see `.agents/rules/tech-stack.md`) |
+| TC-001 | Backend must use Python 3.12+ with FastAPI | Established tech stack |
 | TC-002 | Frontend must use React 19+ with TypeScript and Vite | Established tech stack |
 | TC-003 | AI orchestration must use LangChain/LangGraph | Consistency and ecosystem compatibility |
 | TC-004 | State management must use Zustand | Lightweight, performant for dashboards |
 | TC-005 | Token-cost budget must not exceed $500/month during development | Economic constraint |
 
----
+## 3. The "5-Whys" of Agent Privacy
+1. **Why must the agent use local-first storage?** To ensure the user has total data agency.
+2. **Why is data agency a requirement?** To prevent the leakage of the user’s cognitive patterns and private credentials to third-party LLM providers.
+3. **Why must we prevent this leakage?** Because the agent manages OAuth tokens for the user's financial and legal accounts.
+4. **Why are these tokens handled by the agent?** Because the agent's core function is autonomous task execution across secure platforms.
+5. **Why does this matter?** A leak constitutes a total compromise of the user's digital identity, creating professional and legal liability.
 
-## 3. Traceability
-
-Requirements are traced to implementation via the [TRACEABILITY_MATRIX.md](TRACEABILITY_MATRIX.md) file in this directory. Each commit must reference a REQ-NNN identifier in its commit message or PR description.
-
----
-
-> **Governance:** This SRS is a living document. New requirements must be added here BEFORE implementation begins (as per the no-vibe-coding rule). Requirements are updated as epics progress.
+## 4. Traceability
+Requirements are traced to implementation via the [TRACEABILITY_MATRIX.md](TRACEABILITY_MATRIX.md) file in this directory. 
