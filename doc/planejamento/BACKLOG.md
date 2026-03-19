@@ -4,6 +4,7 @@
 | :--- | :--- | :--- | :--- |
 | **EP-01** | [Fundação Core & Infraestrutura](epicos/fundacao/FEATURE.md) | ✅ Done | 2026-03-18 |
 | **EP-02** | [Command Center (Web Dashboard)](epicos/command-center/FEATURE.md) | 🔄 In Progress | 2026-03-18 |
+| **EP-02** | [Dashboard de Planejamento 3-Camadas](epicos/command-center/FEATURE-dashboard-planejamento.md) | 📋 Backlog | 2026-03-19 |
 | **EP-02** | Integração Omnibar & LLM Chat | ✅ Done | 2026-03-18 |
 | **EP-03** | [Módulo Smart Home (Canvas Multimodal)](epicos/smart-home/FEATURE.md) | 📋 Backlog | 2026-03-18 |
 | **EP-04** | [Integração DevOps & ClinicCare](epicos/devops/FEATURE.md) | 📋 Backlog | 2026-03-18 |

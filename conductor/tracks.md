@@ -31,3 +31,8 @@ This file tracks all major tracks for the project. Each track has its own detail
 
 - [x] **Track: MVP Planejamento Diário com IA**
   *Link: [./tracks/mvp-planejamento_20260318/](./tracks/mvp-planejamento_20260318/)*
+
+---
+
+- [~] **Track: Dashboard de Planejamento 3-Camadas**
+  *Link: [./tracks/planning-dashboard_20260319/](./tracks/planning-dashboard_20260319/)*
