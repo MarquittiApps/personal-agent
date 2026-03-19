@@ -1,35 +1,35 @@
-# Rule: Commits Atômicos e Conventional Commits
+# Rule: Atomic Commits and Conventional Commits
 
-## Objetivo
+## Objective
 
-Garantir que todo o histórico de versionamento (Git) do projeto siga o padrão estruturado do [Conventional Commits (v1.0.0)](https://www.conventionalcommits.org/en/v1.0.0/) e que cada commit seja rigorosamente **atômico**. Cada commit deve representar apenas uma unidade lógica de alteração, evitando a mistura de refatorações, novas features e correções isoladas em um único commit.
+Ensure that all the version history (Git) of the project follows the structured standard of [Conventional Commits (v1.0.0)](https://www.conventionalcommits.org/en/v1.0.0/) and that each commit is strictly **atomic**. Each commit must represent only one logical unit of change, avoiding the mixture of refactorings, new features, and isolated fixes in a single commit.
 
-## Triggers (Quando Ativar)
+## Triggers (When to Activate)
 
-- Constantemente ao fazer stage de arquivos (`git add`) ou criar um commit (`git commit`).
-- Ao estruturar uma mensagem de commit a pedido do usuário.
-- Quando for avaliar, analisar ou reescrever o histórico de commits de uma branch ou Pull Request.
-- Ao atuar como um agente revisor de código sugerindo integrações.
+- Constantly when staging files (`git add`) or creating a commit (`git commit`).
+- When structuring a commit message at the user's request.
+- When evaluating, analyzing, or rewriting the commit history of a branch or Pull Request.
+- When acting as a code review agent suggesting integrations.
 
-## Regras Essenciais
+## Essential Rules
 
-1. **Estrutura Obrigatória:** Todos os commits devem seguir a sintaxe `<tipo>[escopo opcional]: <descrição>`
-   - *Tipos mais comuns:* `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`, `build`, `ci`, `chore`, `revert`.
-2. **Atomicidade Perfeita:** Um commit deve fazer apenas UMA coisa. Se você criou uma feature no módulo A e consertou um typo no módulo B, devem ser feitos 2 commits separados.
-3. **Formatação da Descrição:** Use o verbo no imperativo e tempo presente (ex: "add" em vez de "added" ou "adds"; "fix" em vez de "fixed"). Não use ponto final no término da descrição curta.
-4. **Quebra Opcional (Corpo/Rodapé):** Se a alteração necessitar de contexto adicional, insira uma quebra de linha após a descrição e adicione um corpo (`body`) explicando o "por quê" ou o "como" detalhado.
+1. **Mandatory Structure:** All commits must follow the syntax `<type>[optional scope]: <description>`
+   - *Most common types:* `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`, `build`, `ci`, `chore`, `revert`.
+2. **Perfect Atomicity:** A commit must do only ONE thing. If you created a feature in module A and fixed a typo in module B, 2 separate commits must be made.
+3. **Description Formatting:** Use the verb in the imperative and present tense (e.g., "add" instead of "added" or "adds"; "fix" instead of "fixed"). Do not use a period at the end of the short description.
+4. **Optional Break (Body/Footer):** If the change needs additional context, insert a line break after the description and add a body explaining the "why" or the detailed "how".
 
-## Exemplos
+## Examples
 
-### ❌ Incorreto (Don'ts)
+### ❌ Incorrect (Don'ts)
 
-- **Não Atômico (fazendo muitas coisas juntas):** `feat: adiciona módulo de pagamento e além disso arruma o bug da navbar`
-- **Fora do Padrão (sem prefixo):** `atualizando os testes do usuário`
-- **Gramática Inadequada (verbo no passado):** `fix: fixed null pointer exception on login`
+- **Not Atomic (doing many things together):** `feat: adds payment module and also fixes the navbar bug`
+- **Non-Standard (without prefix):** `updating user tests`
+- **Inadequate Grammar (verb in the past):** `fix: fixed null pointer exception on login`
 
-### ✅ Correto (Do's)
+### ✅ Correct (Do's)
 
-- **Atômico (Apenas a Feature):** `feat(payment): add Stripe integration checkout`
-- **Atômico (Apenas o Fix separado):** `fix(ui): resolve navbar overlapping on mobile view`
-- **Apenas Documentação:** `docs: update setup instructions in README`
-- **Refatoração sem mudança de escopo lógico:** `refactor(auth): extract jwt validation to separate middleware`
+- **Atomic (Feature Only):** `feat(payment): add Stripe integration checkout`
+- **Atomic (Separate Fix Only):** `fix(ui): resolve navbar overlapping on mobile view`
+- **Documentation Only:** `docs: update setup instructions in README`
+- **Refactoring without logical scope change:** `refactor(auth): extract jwt validation to separate middleware`

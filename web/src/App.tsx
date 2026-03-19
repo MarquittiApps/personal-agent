@@ -8,8 +8,10 @@ import { ChatMessage } from './components/dashboard/ChatMessage'
 import { useChatStore } from './store/useChatStore'
 import { useSocket } from './lib/useSocket'
 import { useEffect, useRef } from 'react'
+import { useTranslation } from 'react-i18next'
 
 function App() {
+  const { t } = useTranslation()
   const { messages, agentStatus } = useChatStore()
   const { sendMessage } = useSocket()
   const chatEndRef = useRef<HTMLDivElement>(null)
@@ -27,9 +29,9 @@ function App() {
     <MainLayout>
       <div className="dashboard">
         <header className="dashboard-header">
-          <h1>Command Center</h1>
+          <h1>{t('common.commandCenter')}</h1>
           <p className="subtitle">
-            Welcome to the Personal AI Core. Select a module from the sidebar to get started.
+            {t('common.welcome')}
           </p>
         </header>
         
@@ -47,16 +49,16 @@ function App() {
 
         <section className="chat-history mt-12 mb-8 flex-1 overflow-y-auto max-h-[50vh]">
           <div className="flex justify-between items-center mb-4">
-            <h3 className="text-slate-400 uppercase text-xs font-bold tracking-widest">Interaction Log</h3>
+            <h3 className="text-slate-400 uppercase text-xs font-bold tracking-widest">{t('common.interactionLog')}</h3>
             {agentStatus && (
               <div className="agent-status-indicator text-xs text-blue-400 font-medium animate-pulse">
-                ● {agentStatus}
+                ● {t(`common.agentStatus.${agentStatus.toLowerCase()}`, agentStatus)}
               </div>
             )}
           </div>
           <div className="space-y-4">
             {messages.length === 0 && (
-              <p className="text-slate-400 italic text-sm">No recent interactions.</p>
+              <p className="text-slate-400 italic text-sm">{t('common.noInteractions')}</p>
             )}
             {messages.map((msg) => (
               <ChatMessage 

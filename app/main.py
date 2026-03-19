@@ -7,11 +7,11 @@ import asyncio
 
 app = FastAPI(title="Personal AI Core API")
 
-# Inclui rotas de Autenticação OAuth2
+# Include OAuth2 Authentication routes
 app.include_router(auth_router)
 
-# Compila o grafo globalmente
-graph = compile_graph(use_persistence=False) # Simplificado para o setup inicial
+# Compile the graph globally
+graph = compile_graph(use_persistence=False) # Simplified for initial setup
 
 @app.websocket("/ws/chat")
 async def websocket_endpoint(websocket: WebSocket):
@@ -20,7 +20,7 @@ async def websocket_endpoint(websocket: WebSocket):
     
     try:
         while True:
-            # Recebe mensagem do frontend
+            # Receive message from frontend
             data = await websocket.receive_text()
             message_data = json.loads(data)
             user_input = message_data.get("text", "")
@@ -28,22 +28,22 @@ async def websocket_endpoint(websocket: WebSocket):
             if not user_input:
                 continue
 
-            # Prepara o estado inicial para o grafo do create_react_agent
+            # Prepare initial state for the create_react_agent graph
             initial_state = {
                 "messages": [("user", user_input)]
             }
 
-            # Executa o grafo e faz o stream das respostas
-            # Nota: LangGraph suporte nativo a stream de eventos
+            # Execute the graph and stream responses
+            # Note: LangGraph has native support for event streaming
             async for event in graph.astream_events(initial_state, version="v2"):
                 kind = event["event"]
                 
-                # Stream de tokens (on_chat_model_stream)
+                # Token streaming (on_chat_model_stream)
                 if kind == "on_chat_model_stream":
                     content = event["data"]["chunk"].content
                     
                     if isinstance(content, list):
-                        # Às vezes o langchain modela o chunk como lista de dicts
+                        # Sometimes langchain models chunks as a list of dicts
                         text_chunks = [c.get("text", "") for c in content if isinstance(c, dict)]
                         content = "".join(text_chunks)
                     elif not isinstance(content, str):
@@ -55,27 +55,27 @@ async def websocket_endpoint(websocket: WebSocket):
                             "content": content
                         })
                 
-                # Início de nó (on_chain_start para nós específicos)
+                # Node start (on_chain_start for specific nodes)
                 elif kind == "on_chain_start":
                     node_name = event.get("name")
                     if node_name:
                         await websocket.send_json({
                             "type": "status",
-                            "content": f"Iniciando: {node_name}"
+                            "content": f"Starting: {node_name}"
                         })
                         
-                # Fim de execução de nó interno/ferramenta
+                # End of internal node/tool execution
                 elif kind == "on_tool_end":
                     if event.get("name") == "update_planning_dashboard":
                         tool_output = event.get("data", {}).get("output")
-                        print(f"DEBUG: update_planning_dashboard terminou. Tipo: {type(tool_output)}, Valor: {repr(tool_output)}")
+                        print(f"DEBUG: update_planning_dashboard finished. Type: {type(tool_output)}, Value: {repr(tool_output)}")
                         output_dict = None
                         
                         if isinstance(tool_output, dict):
-                            # Caso ideal: já é dict
+                            # Ideal case: already a dict
                             output_dict = tool_output
                         else:
-                            # Tira o content do ToolMessage, se for um
+                            # Extract content from ToolMessage, if applicable
                             if hasattr(tool_output, "content"):
                                 content_str = tool_output.content
                             elif isinstance(tool_output, str):
@@ -85,29 +85,29 @@ async def websocket_endpoint(websocket: WebSocket):
                             
                             print(f"DEBUG: content_str = {repr(content_str)}")
                             
-                            # Tenta json.loads primeiro (JSON padrão com aspas duplas)
+                            # Try json.loads first (standard JSON with double quotes)
                             try:
                                 output_dict = json.loads(content_str)
                             except Exception:
                                 try:
-                                    # fallback: ast.literal_eval para dict Python com aspas simples
+                                    # fallback: ast.literal_eval for Python dict with single quotes
                                     output_dict = ast.literal_eval(content_str)
                                 except Exception as e:
                                     print(f"DEBUG Error parsing tool output: {e}")
                                     
                         if isinstance(output_dict, dict) and output_dict.get("type") == "DASHBOARD_UPDATE":
-                            print(f"DEBUG: Disparando DASHBOARD_UPDATE no WebSocket: {output_dict}")
+                            print(f"DEBUG: Triggering DASHBOARD_UPDATE on WebSocket: {output_dict}")
                             await websocket.send_json(output_dict)
                         else:
-                            print(f"DEBUG: Não foi possível emitir o evento. Resolvido como: {output_dict}")
+                            print(f"DEBUG: Could not emit event. Resolved as: {output_dict}")
 
-            # Sinaliza fim da resposta
+            # Signal end of response
             await websocket.send_json({"type": "end"})
 
     except WebSocketDisconnect:
         print("WebSocket disconnected")
     except Exception as e:
-        print(f"Erro no WebSocket: {e}")
+        print(f"WebSocket Error: {e}")
         await websocket.send_json({"type": "error", "content": str(e)})
         await websocket.close()
 

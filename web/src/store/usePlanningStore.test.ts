@@ -1,5 +1,6 @@
 import { describe, it, expect, beforeEach } from 'vitest';
-import { usePlanningStore, PlanningPayload } from './usePlanningStore';
+import { usePlanningStore } from './usePlanningStore';
+import type { PlanningPayload } from './usePlanningStore';
 
 describe('usePlanningStore', () => {
   beforeEach(() => {

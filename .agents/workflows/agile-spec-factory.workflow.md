@@ -1,71 +1,71 @@
 ---
-description: Atuar como um esquadrão de desenvolvimento ágil multifuncional
+description: Act as a multifunctional agile development squad
 ---
 
-# Workflow: Fábrica de Especificações Ágeis (Agile Spec Factory)
+# Workflow: Agile Spec Factory
 
-## Objetivo
+## Objective
 
-Atuar como um esquadrão de desenvolvimento ágil multifuncional (Product Manager, Product Owner, Arquiteto de Software, Scrum Master, Tech Lead, Desenvolvedores e QA). O objetivo é receber solicitações de novas funcionalidades ou módulos, analisar o codebase e a extensa documentação existente do projeto ClinicCare, e gerar um arquivo de especificação detalhado (`SPEC.md`) contendo a visão do produto, arquitetura e o planejamento de execução ágil.
+Act as a multifunctional agile development squad (Product Manager, Product Owner, Software Architect, Scrum Master, Tech Lead, Developers, and QA). The goal is to receive requests for new features or modules, analyze the codebase and the existing documentation of the ClinicCare project, and generate a detailed specification file (`SPEC.md`) containing the product vision, architecture, and agile execution planning.
 
-## Gatilhos (Triggers)
+## Triggers
 
-Ative este workflow sempre que o usuário solicitar:
+Activate this workflow whenever the user requests:
 
-- "Criar especificação para o módulo X"
-- "Planejar a feature Y"
-- "Desenvolver SPEC para..."
-- "Detalhar a implementação de Z"
+- "Create specification for module X"
+- "Plan feature Y"
+- "Develop SPEC for..."
+- "Detail the implementation of Z"
 
-## Diretrizes Fundamentais (Strict Rules)
+## Fundamental Guidelines (Strict Rules)
 
-1. **Foco Estrito no Domínio da Clínica:** Esta aplicação foi desenvolvida especialmente para uso interno de uma clínica. O sistema NÃO DEVE focar em "atrair usuários" ou marketing. Todo o fluxo deve ser otimizado para fazer um onboarding fluido a respeito da aplicação para a equipe, direcionando o usuário final rapidamente para a área de login/registro.
-2. **Design Adaptativo Mandatório:** Todas as especificações de interface devem obrigatoriamente prever um design adaptativo. É estritamente necessário que sejam criados/planejados protótipos para web (foco administrativo) e mobile (foco operacional/beira de leito).
-3. **Padrão Arquitetural e Stack:** As soluções devem respeitar a stack estabelecida: React, TypeScript, Vite, Tailwind CSS, gerenciamento de estado global com Zustand (`src/store/`) e infraestrutura Firebase (`src/services/firebase.ts`).
-4. **Alinhamento Documental:** Nenhuma especificação pode entrar em conflito com as definições já estabelecidas nas pastas `Definições e Planejamento/` (PRD, Conformidade_e_Seguranca) e `doc/` (`architecture.md`, `data_model.md`).
-5. **Segurança e RBAC:** Atualizações no modelo de dados devem obrigatoriamente incluir os reflexos diretos no arquivo `firestore.rules`.
+1. **Strict Focus on Clinic Domain:** This application was developed specifically for internal use by a clinic. The system SHOULD NOT focus on "attracting users" or marketing. The entire flow must be optimized to provide a fluid onboarding regarding the application for the team, directing the end user quickly to the login/registration area.
+2. **Mandatory Adaptive Design:** All interface specifications must necessarily provide for an adaptive design. it is strictly necessary that prototypes for web (administrative focus) and mobile (operational focus) are created/planned.
+3. **Architectural Standard and Stack:** Solutions must respect the established stack: React, TypeScript, Vite, Tailwind CSS, global state management with Zustand (`src/store/`) and Firebase infrastructure (`src/services/firebase.ts`).
+4. **Documentary Alignment:** No specification can conflict with the definitions already established in the `PRD.md` and `doc/` files.
+5. **Security and RBAC:** Updates to the data model must necessarily include direct reflections in the `firestore.rules` file.
 
-## Passos de Execução (Execution Steps)
+## Execution Steps
 
-Sempre que acionado, execute os seguintes passos sequencialmente, simulando as perspectivas da equipe ágil:
+Whenever triggered, execute the following steps sequentially, simulating the perspectives of the agile team:
 
-### Passo 1: Descoberta e Contextualização (Papel: PM & PO)
+### Step 1: Discovery and Contextualization (Role: PM & PO)
 
-- **Ação:** Leia o input do usuário e cruze as informações com `Definições e Planejamento/PRD.md` e os arquivos dentro de `doc/`. Inspecione a pasta `src/pages/` para verificar se já existe um esqueleto visual para o módulo solicitado.
-- Defina o "Porquê" e o "O Quê" do módulo.
-- Esboce os Épicos Principais e Histórias de Usuário (User Stories) em formato BDD (Given/When/Then).
+- **Action:** Read user input and cross-reference information with `PRD.md` and files within `doc/`. Inspect the `src/pages/` folder to check if a visual skeleton already exists for the requested module.
+- Define the "Why" and the "What" of the module.
+- Sketch the Main Epics and User Stories in BDD format (Given/When/Then).
 
-### Passo 2: Design Técnico e Arquitetura (Papel: Arquiteto & Tech Lead)
+### Step 2: Technical Design and Architecture (Role: Architect & Tech Lead)
 
-- **Ação:** Projete o "Como".
-- Analise o `doc/data_model.md` e defina as novas coleções, subcoleções e relacionamentos no Cloud Firestore.
-- Especifique as regras de validação e restrições de acesso (RBAC) para o `firestore.rules`.
-- Liste as alterações necessárias nos componentes React, nas stores do Zustand (`src/store/`) e nas tipagens TypeScript (`src/types/`).
+- **Action:** Project the "How".
+- Analyze `doc/data_model.md` and define new collections, subcollections, and relationships in Cloud Firestore.
+- Specify validation rules and access restrictions (RBAC) for `firestore.rules`.
+- List necessary changes in React components, Zustand stores (`src/store/`), and TypeScript types (`src/types/`).
 
-### Passo 3: Garantia de Qualidade e Conformidade (Papel: QA & SecOps)
+### Step 3: Quality Assurance and Compliance (Role: QA & SecOps)
 
-- **Ação:** Para cada Épico, defina os Critérios de Aceite (Acceptance Criteria).
-- Verifique se a proposta atende às regulamentações de saúde e proteção de dados descritas em `Conformidade_e_Seguranca.md`.
-- Especifique testes unitários e de integração essenciais.
+- **Action:** For each Epic, define the Acceptance Criteria.
+- Verify if the proposal meets health and data protection regulations described in compliance documents.
+- Specify essential unit and integration tests.
 
-### Passo 4: Planejamento Ágil (Papel: Scrum Master)
+### Step 4: Agile Planning (Role: Scrum Master)
 
-- **Ação:** Quebre os Épicos e decisões técnicas em Sprints acionáveis.
-- Estruture Tarefas (Tasks) de desenvolvimento de forma lógica (ex: 1. Tipagem e Zustand; 2. Integração Firebase; 3. Construção UI Mobile/Web; 4. Ajustes de Regras de Segurança).
+- **Action:** Break down Epics and technical decisions into actionable Sprints.
+- Structure development Tasks logically (e.g., 1. Typing and Zustand; 2. Firebase Integration; 3. Mobile/Web UI Construction; 4. Security Rules Adjustments).
 
-### Passo 5: Geração e Escrita do Documento
+### Step 5: Document Generation and Writing
 
-- **Ação:** Crie o arquivo de especificação técnica. Salve-o no caminho `doc/specs/[nome-do-modulo]/SPEC.md`.
-- A estrutura do documento DEVE conter:
-  1. **Visão Geral e Alinhamento** (Por que isso importa para a operação da clínica)
-  2. **Requisitos de Design Adaptativo** (Fluxos Web e Mobile)
-  3. **Especificação Técnica e Modelagem** (Esquema Firestore, Tipagens, Estado Zustand)
-  4. **Matriz de Segurança (firestore.rules)**
-  5. **Planejamento Ágil (Sprints e Tarefas)**
-  6. **Critérios de Aceite (DoD)**
+- **Action:** Create the technical specification file. Save it at the path `doc/specs/[module-name]/SPEC.md`.
+- The document structure MUST contain:
+  1. **Overview and Alignment** (Why this matters for clinic operations)
+  2. **Adaptive Design Requirements** (Web and Mobile Flows)
+  3. **Technical Specification and Modeling** (Firestore Schema, Typings, Zustand State)
+  4. **Security Matrix (firestore.rules)**
+  5. **Agile Planning (Sprints and Tasks)**
+  6. **Acceptance Criteria (DoD)**
 
-### Passo 6: Revisão Final e Interação
+### Step 6: Final Review and Interaction
 
-- Apresente ao usuário um relatório de que a Especificação foi gerada no diretório `doc/specs/`.
-- Resuma as principais decisões arquiteturais tomadas.
-- Pergunte de forma proativa: *"Deseja refinar alguma regra de acesso no Firestore, ajustar o escopo de alguma Sprint, ou podemos iniciar a geração do código para a Sprint 1?"*
+- Present a report to the user that the Specification has been generated in the `doc/specs/` directory.
+- Summarize the main architectural decisions made.
+- Proactively ask: *"Do you want to refine any access rules in Firestore, adjust the scope of any Sprint, or can we start code generation for Sprint 1?"*

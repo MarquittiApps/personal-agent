@@ -6,7 +6,7 @@ import google_auth_oauthlib.flow
 from app.core.database import get_db_connection
 from app.core.crypto import encrypt_data
 
-# Necessário para testar localmente em http em vez de https
+# Necessary to test locally on http instead of https
 os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
 
 router = APIRouter(prefix="/auth", tags=["auth"])
@@ -15,7 +15,7 @@ CLIENT_ID = os.getenv("GOOGLE_CLIENT_ID")
 CLIENT_SECRET = os.getenv("GOOGLE_CLIENT_SECRET")
 REDIRECT_URI = os.getenv("GOOGLE_REDIRECT_URI", "http://localhost:8000/auth/google/callback")
 
-# Scopes necessários para Calendar e Tasks e informações de usuário se necessário
+# Necessary scopes for Calendar and Tasks and user info if needed
 SCOPES = [
     'https://www.googleapis.com/auth/calendar',
     'https://www.googleapis.com/auth/tasks'
@@ -51,7 +51,7 @@ def init_db():
     cur.close()
     conn.close()
 
-# Dicionário temporário para manter o code_verifier do PKCE (válido para 1 worker em ambiente dev)
+# Temporary dictionary to maintain the PKCE code_verifier (valid for 1 worker in dev environment)
 oauth_states = {}
 
 @router.get("/google")
@@ -63,14 +63,14 @@ def login_google():
         )
         flow.redirect_uri = REDIRECT_URI
         
-        # prompt='consent' e access_type='offline' forçam o envio do refresh_token
+        # prompt='consent' and access_type='offline' force the sending of the refresh_token
         authorization_url, state = flow.authorization_url(
             access_type='offline',
             include_granted_scopes='true',
             prompt='consent'
         )
         
-        # Salva o code_verifier do fluxo associado ao state gerado
+        # Saves the flow's code_verifier associated with the generated state
         if hasattr(flow, 'code_verifier'):
             oauth_states[state] = flow.code_verifier
             
@@ -93,17 +93,17 @@ def callback_google(request: Request):
         )
         flow.redirect_uri = REDIRECT_URI
         
-        # Restaura o code_verifier gerado no step de login
+        # Restores the code_verifier generated in the login step
         if state in oauth_states:
             flow.code_verifier = oauth_states.pop(state)
         
-        # Converte em URL http por conta do Insecure Transport em prod deverá ser https
+        # Converts to http URL because of Insecure Transport; in prod it should be https
         authorization_response = str(request.url)
         flow.fetch_token(authorization_response=authorization_response)
         
         credentials = flow.credentials
         
-        # Serializar credenciais
+        # Serialize credentials
         creds_data = {
             'token': credentials.token,
             'refresh_token': credentials.refresh_token,
@@ -116,10 +116,10 @@ def callback_google(request: Request):
         creds_json = json.dumps(creds_data)
         encrypted_token = encrypt_data(creds_json)
         
-        # User ID padronizado para o MVP
+        # Standardized User ID for the MVP
         user_id = "default_user"
         
-        init_db() # garante que a tabela existe
+        init_db() # ensures the table exists
         conn = get_db_connection()
         cur = conn.cursor()
         
@@ -134,7 +134,10 @@ def callback_google(request: Request):
         cur.close()
         conn.close()
         
-        # Idealmente redirecionar de volta pro frontend, mas num MVP backend-only no momento exibimos sucesso.
-        return {"message": "Autenticação Google realizada com sucesso. Tokens armazenados de modo seguro.", "next_steps": "Pode fechar esta aba e retornar à aplicação."}
+        # Ideally redirect back to the frontend, but for a backend-only MVP at the moment we show success.
+        return {
+            "message": "Google Authentication successful. Tokens stored securely.",
+            "next_steps": "You can close this tab and return to the application."
+        }
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

@@ -1,0 +1,41 @@
+{
+  "common": {
+    "welcome": "Welcome to the Personal AI Core. Select a module from the sidebar to get started.",
+    "commandCenter": "Command Center",
+    "interactionLog": "Interaction Log",
+    "noInteractions": "No recent interactions.",
+    "agentStatus": {
+      "thinking": "Thinking...",
+      "processing": "Processing Document...",
+      "idle": "Idle",
+      "monitoring": "Monitoring",
+      "ready": "Ready"
+    }
+  },
+  "dashboard": {
+    "systemOverview": "System Overview",
+    "agentHealth": "Agent Health",
+    "cpuLoad": "CPU Load",
+    "memory": "Memory",
+    "coreOnline": "Core ONLINE",
+    "coreOffline": "Core OFFLINE",
+    "planning": "Planning Dashboard (3-Layer)",
+    "dailyPlanning": "Daily Planning",
+    "weeklyPlanning": "Weekly Planning",
+    "monthlyPlanning": "Monthly Planning",
+    "noItems": "No items defined.",
+    "knowledgeBase": "RAG Knowledge Base",
+    "knowledgeDescription": "Import PDFs of manuals or technical standards for AI memory.",
+    "dragAndDrop": "Drag your PDF or click to select",
+    "startIngestion": "Start Semantic Ingestion",
+    "processingDocument": "Processing Document...",
+    "processed": "Processed",
+    "iotCatalog": "IoT Hardware Catalog",
+    "name": "Name",
+    "brand": "Brand",
+    "protocol": "Protocol",
+    "actions": "Actions",
+    "edit": "Edit",
+    "addNewDevice": "+ Add New Device"
+  }
+}

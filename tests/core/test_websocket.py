@@ -9,14 +9,14 @@ class TestWebSocket(unittest.TestCase):
 
     def test_websocket_chat_connection(self):
         with self.client.websocket_connect("/ws/chat") as websocket:
-            # Envia uma mensagem de teste
-            websocket.send_text(json.dumps({"text": "Teste de conexão"}))
+            # Send a test message
+            websocket.send_text(json.dumps({"text": "Connection test"}))
             
-            # Recebe a resposta (espera-se tokens ou status antes do end)
+            # Receive response (expecting tokens or status before end)
             data = websocket.receive_json()
             self.assertIn(data["type"], ["token", "status", "end"])
             
-            # Continua recebendo até o fim
+            # Continue receiving until end
             while data["type"] != "end":
                 data = websocket.receive_json()
             

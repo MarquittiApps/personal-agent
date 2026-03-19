@@ -2,6 +2,20 @@ import { render, screen, fireEvent } from '@testing-library/react'
 import { Omnibar } from './Omnibar'
 import { describe, it, expect, vi } from 'vitest'
 
+// Mock react-i18next
+vi.mock('react-i18next', () => ({
+  useTranslation: () => ({
+    t: (key: string) => {
+      if (key === 'common.welcome') return 'Type a command or message...'
+      return key
+    },
+    i18n: {
+      language: 'en',
+      changeLanguage: vi.fn(),
+    },
+  }),
+}))
+
 describe('Omnibar Component', () => {
   it('renders the input field with placeholder', () => {
     render(<Omnibar onSend={() => {}} />)

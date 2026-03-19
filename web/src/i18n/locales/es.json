@@ -1,0 +1,41 @@
+{
+  "common": {
+    "welcome": "Bienvenido a Personal AI Core. Seleccione un módulo de la barra lateral para comenzar.",
+    "commandCenter": "Centro de Comando",
+    "interactionLog": "Registro de Interacción",
+    "noInteractions": "No hay interacciones recientes.",
+    "agentStatus": {
+      "thinking": "Pensando...",
+      "processing": "Procesando Documento...",
+      "idle": "Inactivo",
+      "monitoring": "Monitoreando",
+      "ready": "Listo"
+    }
+  },
+  "dashboard": {
+    "systemOverview": "Descripción General del Sistema",
+    "agentHealth": "Salud del Agente",
+    "cpuLoad": "Carga de CPU",
+    "memory": "Memoria",
+    "coreOnline": "Core ONLINE",
+    "coreOffline": "Core OFFLINE",
+    "planning": "Panel de Planificación (3-Capas)",
+    "dailyPlanning": "Planificación Diaria",
+    "weeklyPlanning": "Planificación Semanal",
+    "monthlyPlanning": "Planificación Mensual",
+    "noItems": "No hay elementos definidos.",
+    "knowledgeBase": "Base de Conocimientos RAG",
+    "knowledgeDescription": "Importe PDFs de manuales o normas técnicas para la memoria de IA.",
+    "dragAndDrop": "Arrastra tu PDF o haz clic para seleccionar",
+    "startIngestion": "Iniciar Ingestión Semántica",
+    "processingDocument": "Procesando Documento...",
+    "processed": "Procesado",
+    "iotCatalog": "Catálogo de Hardware IoT",
+    "name": "Nombre",
+    "brand": "Marca",
+    "protocol": "Protocolo",
+    "actions": "Acciones",
+    "edit": "Editar",
+    "addNewDevice": "+ Agregar Nuevo Dispositivo"
+  }
+}

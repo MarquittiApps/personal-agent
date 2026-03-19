@@ -10,7 +10,7 @@ class TestPersistence(unittest.TestCase):
         mock_checkpointer = MagicMock(spec=BaseCheckpointSaver)
         mock_from_conn_string.return_value = mock_checkpointer
         
-        # Simula a compilação do grafo com checkpointer
+        # Simulates graph compilation with checkpointer
         from langgraph.graph import StateGraph, START, END
         from app.core.graph import State
         
@@ -19,10 +19,10 @@ class TestPersistence(unittest.TestCase):
         builder.add_edge(START, "test")
         builder.add_edge("test", END)
         
-        # Compila com o mock
+        # Compiles with the mock
         graph = builder.compile(checkpointer=mock_checkpointer)
         
-        # Verifica se o grafo tem um checkpointer
+        # Checks if the graph has a checkpointer
         self.assertIsNotNone(graph.checkpointer)
 
 if __name__ == '__main__':

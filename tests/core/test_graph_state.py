@@ -3,19 +3,19 @@ from typing import Annotated, TypedDict
 from langgraph.graph import StateGraph, START, END
 
 class State(TypedDict):
-    """Schema do estado do grafo."""
+    """Graph state schema."""
     messages: list[str]
     current_node: str
 
 class TestGraphState(unittest.TestCase):
     def test_state_initialization(self):
-        # Verifica se o estado inicial é carregado corretamente
+        # Checks if the initial state is loaded correctly
         initial_state: State = {"messages": [], "current_node": "start"}
         self.assertEqual(initial_state["current_node"], "start")
         self.assertEqual(len(initial_state["messages"]), 0)
 
     def test_simple_graph_transition(self):
-        # Define um grafo simples para testar transições de estado
+        # Defines a simple graph to test state transitions
         def node_a(state: State) -> State:
             return {"messages": state["messages"] + ["Hello from Node A"], "current_node": "node_a"}
         
@@ -26,7 +26,7 @@ class TestGraphState(unittest.TestCase):
         
         graph = builder.compile()
         
-        # Executa o grafo
+        # Executes the graph
         result = graph.invoke({"messages": [], "current_node": "start"})
         
         # Assertions

@@ -1,32 +1,32 @@
 ---
 name: ai-collaboration
-description: "Protocolos de colaboração entre o usuário e os Agentes de IA do ecossistema."
+description: "Collaboration protocols between the user and the ecosystem's AI Agents."
 ---
 
 # AI Collaboration Protocol
 
-Este protocolo define como as IAs do Personal AI Core devem atuar para maximizar a autonomia e a qualidade.
+This protocol defines how the Personal AI Core IAs must act to maximize autonomy and quality.
 
-## Ciclo de Desenvolvimento (Padrão)
-1. **Pesquisa:** O Agente deve SEMPRE ler as `Tracks` (`spec.md` e `plan.md`) antes de propor qualquer alteração de código.
-2. **Strategy:** Antes de codar, o Agente deve explicar a estratégia (ex: "Vou criar o endpoint X no arquivo Y e o teste Z").
-3. **Execução:** O Agente deve realizar alterações cirúrgicas, respeitando o princípio de **Atomicidade**.
-4. **Validação:** Cada implementação DEVE ser acompanhada de seu respectivo teste unitário ou de integração.
+## Development Cycle (Standard)
+1. **Research:** The Agent must ALWAYS read the `Tracks` (`spec.md` and `plan.md`) before proposing any code change.
+2. **Strategy:** Before coding, the Agent must explain the strategy (e.g., "I will create endpoint X in file Y and test Z").
+3. **Execution:** The Agent must make surgical changes, respecting the principle of **Atomicity**.
+4. **Validation:** Each implementation MUST be accompanied by its respective unit or integration test.
 
-## Regras de Versionamento (Skills: `commit`)
-1. **Commits Atômicos:** Cada commit deve representar uma unidade lógica de alteração. Se alterar backend e frontend em tarefas distintas, crie dois commits.
-2. **Conventional Commits:** Utilize o padrão `<tipo>(escopo): <mensagem>`.
-    - `feat`: Novas funcionalidades.
-    - `fix`: Correções de bugs.
-    - `docs`: Alterações na documentação.
-    - `test`: Adição ou refatoração de testes.
-    - `refactor`: Mudança no código que não altera comportamento nem corrige bug.
+## Versioning Rules (Skills: `commit`)
+1. **Atomic Commits:** Each commit must represent a logical unit of change. If you change backend and frontend in distinct tasks, create two commits.
+2. **Conventional Commits:** Use the `<type>(scope): <message>` standard.
+    - `feat`: New features.
+    - `fix`: Bug fixes.
+    - `docs`: Documentation changes.
+    - `test`: Addition or refactoring of tests.
+    - `refactor`: Code change that neither alters behavior nor fixes a bug.
 
-## Regras de Documentação
-- Sempre atualize o `PROGRESS.md` ou o status da Track após completar uma tarefa significativa.
-- Se uma nova skill for criada, ela deve ser devidamente documentada em `.agents/skills/<nome>/SKILL.md`.
+## Documentation Rules
+- Always update `PROGRESS.md` or the Track status after completing a significant task.
+- If a new skill is created, it must be properly documented in `.agents/skills/<name>/SKILL.md`.
 
-## Testes Automatizados (MANDATÓRIO)
-- Nenhuma funcionalidade é considerada completa sem testes que a validem.
-- Utilize `pytest` para o backend e `vitest` ou `playwright` para o frontend.
-- O Agente deve SEMPRE rodar os testes antes de considerar a tarefa finalizada.
+## Automated Testing (MANDATORY)
+- No functionality is considered complete without tests that validate it.
+- Use `pytest` for the backend and `vitest` or `playwright` for the frontend.
+- The Agent must ALWAYS run the tests before considering the task finished.
