@@ -1,9 +1,9 @@
 # Feature: MVP Planejamento Diário com IA
 
 **Épico:** MVP de Planejamento (EP-07)
-**Status:** Draft
+**Status:** Done
 **Criado:** 2026-03-18
-**Atualizado:** 2026-03-18
+**Atualizado:** 2026-03-19
 
 ## Visão
 

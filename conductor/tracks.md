@@ -29,5 +29,5 @@ This file tracks all major tracks for the project. Each track has its own detail
 
 ---
 
-- [~] **Track: MVP Planejamento Diário com IA**
-*Link: [./tracks/mvp-planejamento_20260318/](./tracks/mvp-planejamento_20260318/)*
+- [x] **Track: MVP Planejamento Diário com IA**
+  *Link: [./tracks/mvp-planejamento_20260318/](./tracks/mvp-planejamento_20260318/)*

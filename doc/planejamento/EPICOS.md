@@ -8,4 +8,4 @@
 | **EP-04** | [Integração DevOps & ClinicCare](epicos/devops/FEATURE.md) | 📋 Backlog | Conectividade via MCP com VS Code e monitoramento de PRs. |
 | **EP-05** | [Operations Hub (Consultoria TI)](epicos/operations/FEATURE.md) | 📋 Backlog | Gestão de orçamentos, projetos elétricos e infraestrutura física. |
 | **EP-06** | [Meta-Agente (Auto-Evolução)](epicos/meta-agente/FEATURE.md) | 📋 Backlog | Sistema de auto-melhoria e geração autônoma de componentes. |
-| **EP-07** | [MVP Planejamento Diário com IA](epicos/mvp-planejamento/FEATURE.md) | 📋 Backlog | Integração com Google Calendar e Tasks via chat com UI em tempo real de planejamento e insights. |
+| **EP-07** | [MVP Planejamento Diário com IA](epicos/mvp-planejamento/FEATURE.md) | ✅ Done | Integração com Google Calendar e Tasks via chat com UI em tempo real de planejamento e insights. |
