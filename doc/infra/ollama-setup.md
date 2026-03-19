@@ -49,7 +49,7 @@ bash scripts/setup_local_llm.sh
 ### 1. Install Ollama
 
 - **Windows/macOS:** Download the installer from [ollama.com](https://ollama.com)
-  ![Ollama Home](file:///C:/Users/Luis%20Marquitti/.gemini/antigravity/brain/e616235c-9591-45a5-9f92-f408b299be95/ollama_home_1773943814893.png)
+  ![Ollama Home](C:\Users\Luis Marquitti\.gemini\antigravity\brain\e616235c-9591-45a5-9f92-f408b299be95\ollama_home_1773943814893.png)
 - **Linux:**
   ```bash
   curl -fsSL https://ollama.com/install.sh | sh
