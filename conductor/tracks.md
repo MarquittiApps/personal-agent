@@ -42,3 +42,8 @@ This file tracks all major tracks for the project. Each track has its own detail
 - [~] **Track: Base de Conhecimento RAG & Catálogos (EP-08)**
   *Link: [./tracks/rag-engine_20260319/](./tracks/rag-engine_20260319/)*
 
+---
+
+- [ ] **Track: Integração com Modelos LLM Locais (Ollama) (EP-01)**
+  *Link: [./tracks/llm-local-ollama_20260319/](./tracks/llm-local-ollama_20260319/)*
+
