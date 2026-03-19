@@ -67,8 +67,32 @@ async def websocket_endpoint(websocket: WebSocket):
                 elif kind == "on_tool_end":
                     if event.get("name") == "update_planning_dashboard":
                         tool_output = event.get("data", {}).get("output")
-                        if isinstance(tool_output, dict) and tool_output.get("type") == "DASHBOARD_UPDATE":
-                            await websocket.send_json(tool_output)
+                        print(f"DEBUG: update_planning_dashboard terminou. Tipo: {type(tool_output)}")
+                        output_dict = None
+                        
+                        if hasattr(tool_output, "content"):
+                            content_str = tool_output.content
+                        elif isinstance(tool_output, str):
+                            content_str = tool_output
+                        elif isinstance(tool_output, dict):
+                            output_dict = tool_output
+                            content_str = ""
+                        else:
+                            content_str = str(tool_output)
+                            
+                        if not output_dict and content_str:
+                            try:
+                                import ast
+                                # ast.literal_eval é mais seguro para parsear strings em dicts originados de retornos Python (' em vez de ")
+                                output_dict = ast.literal_eval(content_str)
+                            except Exception as e:
+                                print(f"DEBUG Error parsing tool output: {e}")
+                                
+                        if isinstance(output_dict, dict) and output_dict.get("type") == "DASHBOARD_UPDATE":
+                            print("DEBUG: Disparando DASHBOARD_UPDATE no WebSocket")
+                            await websocket.send_json(output_dict)
+                        else:
+                            print(f"DEBUG: Não foi possível emitir o evento. Resolvido como: {output_dict}")
 
             # Sinaliza fim da resposta
             await websocket.send_json({"type": "end"})

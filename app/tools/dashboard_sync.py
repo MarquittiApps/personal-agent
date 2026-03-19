@@ -1,30 +1,31 @@
 from langchain_core.tools import tool
-from typing import List, Dict, Any
+from typing import List, Dict, Optional
 
 @tool
 def update_planning_dashboard(
-    daily_items: List[Dict[str, str]], 
-    weekly_items: List[Dict[str, str]], 
-    monthly_items: List[Dict[str, str]]
+    daily_items: Optional[List[Dict[str, str]]] = None, 
+    weekly_items: Optional[List[Dict[str, str]]] = None, 
+    monthly_items: Optional[List[Dict[str, str]]] = None
 ) -> dict:
-    """Atualiza a visão do Dashboard de Planejamento do usuário (3 camadas).
-    Deve ser chamada SOMENTE após o usuário confirmar explicitamente que deseja a atualização visual no painel.
+    """Atualiza o Dashboard de Planejamento visual do usuário (3 camadas: Diário, Semanal, Mensal).
+    Deve ser chamada quando o usuário confirmar que quer atualizar o painel visual, usando os dados já disponíveis na conversa.
+    Não espere dados perfeitos — use o que você já sabe. Se uma camada não tiver dados, envie lista vazia.
     
     Args:
-        daily_items (List[Dict[str, str]]): Tarefas e eventos diários. Requer as chaves 'id', 'title', e 'status' ('pending', 'in_progress', 'completed').
-        weekly_items (List[Dict[str, str]]): Metas semanais. Requer chaves 'id', 'title', 'status'.
-        monthly_items (List[Dict[str, str]]): Objetivos mensais. Requer chaves 'id', 'title', 'status'.
+        daily_items: Tarefas e eventos de HOJE. Cada item: {'id': str, 'title': str, 'status': 'pending'|'in_progress'|'completed'}.
+        weekly_items: Metas e compromissos desta SEMANA. Mesmo formato.
+        monthly_items: Objetivos e metas deste MÊS. Mesmo formato.
         
     Returns:
-        dict: O payload da interface de atualização.
+        dict: O payload da atualização enviado ao frontend.
     """
     
     payload = {
         "type": "DASHBOARD_UPDATE",
         "data": {
-            "daily": daily_items,
-            "weekly": weekly_items,
-            "monthly": monthly_items
+            "daily": daily_items or [],
+            "weekly": weekly_items or [],
+            "monthly": monthly_items or []
         }
     }
     

@@ -8,7 +8,7 @@
     "db:logs": "docker compose logs -f db",
     "setup": "npm install && pip install -r requirements.txt && npm run db:up && npm run doctor",
     "doctor": "python scripts/doctor.py",
-    "dev:backend": "python -m uvicorn app.main:app --port 8000 --reload",
+    "dev:backend": ".venv\\Scripts\\uvicorn.exe app.main:app --port 8000 --reload",
     "dev:frontend": "cd web && npm run dev"
   },
   "author": "Luis Marquitti",
