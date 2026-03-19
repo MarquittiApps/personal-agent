@@ -1,151 +1,151 @@
 Product Requirements Document (PRD)
 
-Produto: Personal AI Core (Assistente Pessoal Modular com Especializações em Engenharia e TI)
-Status: Arquitetura / Planejamento Web
-Data: Março de 2026
+Product: Personal AI Core (Modular Personal Assistant with Engineering and IT Specializations)
+Status: Web Architecture / Planning
+Date: March 2026
 
-1. Visão Geral (Overview)
+1. Overview
 
-O Personal AI Core é um ecossistema de inteligência artificial de uso pessoal, projetado para atuar como um "segundo cérebro" e co-piloto profissional. Operando de forma integrada ao ambiente de trabalho (VS Code via Model Context Protocol - MCP) e acessível através de uma Aplicação Web moderna, o sistema orquestra múltiplas responsabilidades através de uma arquitetura baseada em módulos (Sub-agentes).
+The Personal AI Core is a personal use artificial intelligence ecosystem, designed to act as a "second brain" and professional co-pilot. Operating integrated into the work environment (VS Code via Model Context Protocol - MCP) and accessible through a modern Web Application, the system orchestrates multiple responsibilities through a module-based architecture (Sub-agents).
 
-O sistema intercala perfeitamente entre a organização da vida pessoal, o desenvolvimento de software (com foco no SaaS ClinicCare), o design de projetos elétricos e de automação, e a gestão operacional de uma consultoria de TI. Mais do que um conjunto fixo de ferramentas, o sistema possui uma arquitetura evolutiva, gerenciada por um Meta-Agente capaz de criar e melhorar outros agentes.
+The system seamlessly switches between personal life organization, software development (focusing on the ClinicCare SaaS), electrical and automation project design, and the operational management of an IT consultancy. More than a fixed set of tools, the system has an evolutionary architecture, managed by a Meta-Agent capable of creating and improving other agents.
 
-2. Declaração do Problema (Problem Statement)
+2. Problem Statement
 
-Um profissional multidisciplinar (Engenheiro/Desenvolvedor/Consultor) sofre com a fragmentação de contexto e a sobrecarga cognitiva. O tempo é desperdiçado transitando entre o planejamento do dia a dia (e-mails, reuniões), o desenvolvimento complexo de software full-stack, e a elaboração de propostas e topologias para infraestrutura física (redes, elétrica, automação residencial). Ferramentas isoladas não compartilham contexto. Além disso, a falta de um painel de controle unificado (Web Dashboard) torna difícil visualizar o panorama geral das operações simultâneas.
+A multidisciplinary professional (Engineer/Developer/Consultant) suffers from context fragmentation and cognitive overload. Time is wasted transitioning between day-to-day planning (emails, meetings), complex full-stack software development, and the preparation of proposals and topologies for physical infrastructure (networks, electrical, home automation). Isolated tools do not share context. Furthermore, the lack of a unified control panel (Web Dashboard) makes it difficult to visualize the general overview of simultaneous operations.
 
-3. Público-Alvo e Persona (Target Audience)
+3. Target Audience and Persona
 
-Usuário Principal (O "Solo-Builder" / Consultor Multi-disciplinar): Um profissional que gerencia uma rotina intensa envolvendo desenvolvimento de produtos próprios (SaaS), consultoria B2B (TI, Redes, CFTV) e projetos de engenharia física (Elétrica/Automação).
+Main User (The "Solo-Builder" / Multi-disciplinary Consultant): A professional who manages an intense routine involving the development of their own products (SaaS), B2B consultancy (IT, Networks, CCTV), and physical engineering projects (Electrical/Automation).
 
-Uso Futuro: Pode ser expandido para atuar como um "funcionário digital" para outros membros da equipe da consultoria ou do ClinicCare.
+Future Use: Can be expanded to act as a "digital employee" for other members of the consultancy or ClinicCare team.
 
-4. Visão do Produto e Objetivos (Vision & Goals)
+4. Product Vision and Goals
 
-Visão: Centralizar a gestão da vida profissional e pessoal num único fluxo "Agentic", acessível via Web e IDE, onde um orquestrador central entende a intenção do usuário, aciona o módulo correto, mantém a memória de longo prazo e evolui o próprio sistema criando novas habilidades.
+Vision: Centralize professional and personal life management in a single "Agentic" flow, accessible via Web and IDE, where a central orchestrator understands user intent, triggers the correct module, maintains long-term memory, and evolves the system itself by creating new skills.
 
-Objetivos:
+Goals:
 
-Reduzir a carga administrativa diária em 80%.
+Reduce daily administrative load by 80%.
 
-Acelerar o ciclo de desenvolvimento do ClinicCare com IA e RAG.
+Accelerate the ClinicCare development cycle with AI and RAG.
 
-Padronizar a entrega de projetos físicos (Elétrica, Automação, Infra de TI).
+Standardize the delivery of physical projects (Electrical, Automation, IT Infrastructure).
 
-Garantir a evolução contínua do sistema, permitindo que a IA crie novos agentes automaticamente.
+Ensure continuous system evolution, allowing the AI to create new agents automatically.
 
-Prover uma Interface Web centralizada de alta performance para visualização de relatórios, aprovação de tarefas (Human-in-the-Loop) e upload de arquivos (ex: plantas arquitetônicas).
+Provide a high-performance centralized Web Interface for viewing reports, approving tasks (Human-in-the-Loop), and uploading files (e.g., architectural floor plans).
 
-5. Arquitetura de Módulos (System Modules)
+5. Module Architecture (System Modules)
 
-O sistema é dividido em 6 módulos principais, liderados por um Agente Supervisor:
+The system is divided into 6 main modules, led by a Supervisor Agent:
 
-5.1. Módulo Supervisor e de Evolução Contínua (Meta-Agente)
+5.1. Supervisor and Continuous Evolution Module (Meta-Agent)
 
-Responsabilidade: Orquestrar, gerenciar e evoluir todo o ecossistema de agentes.
+Responsibility: Orchestrate, manage, and evolve the entire agent ecosystem.
 
-Capacidades: Roteamento de tarefas, Auto-melhoria baseada em logs, e criação autônoma de novos sub-agentes e interfaces.
+Capabilities: Task routing, log-based self-improvement, and autonomous creation of new sub-agents and interfaces.
 
-5.2. Módulo Core: Assistente Pessoal (Daily Planner)
+5.2. Core Module: Personal Assistant (Daily Planner)
 
-Responsabilidade: Gerenciamento do tempo, comunicação e contexto pessoal.
+Responsibility: Time management, communication, and personal context.
 
-5.3. Módulo de Desenvolvimento de Software (Foco: ClinicCare)
+5.3. Software Development Module (Focus: ClinicCare)
 
-Responsabilidade: Atuar como Engenheiro de Software Sênior para o SaaS principal, executando TDD, revisando PRs e interagindo via VS Code (MCP).
+Responsibility: Act as a Senior Software Engineer for the main SaaS, executing TDD, reviewing PRs, and interacting via VS Code (MCP).
 
-5.4. Módulo de Automação Residencial e IoT
+5.4. Home Automation and IoT Module
 
-Responsabilidade: Planejamento e design de projetos de Smart Homes.
+Responsibility: Planning and design of Smart Home projects.
 
-Capacidades: Análise multimodal de plantas baixas para sugestão de posicionamento de sensores (PIR, Iluminação). Geração de código YAML para Home Assistant.
+Capabilities: Multimodal analysis of floor plans for suggesting sensor positioning (PIR, Lighting). YAML code generation for Home Assistant.
 
-5.5. Módulo de Projetos Elétricos e Infraestrutura
+5.5. Electrical and Infrastructure Projects Module
 
-Responsabilidade: Apoio à elaboração de projetos elétricos e infraestrutura de TI (redes/CFTV).
+Responsibility: Support for the preparation of electrical projects and IT infrastructure (networks/CCTV).
 
-5.6. Módulo de Gestão de Consultoria TI
+5.6. IT Consultancy Management Module
 
-Responsabilidade: Backoffice operacional, elaboração de propostas e controle de ativos.
+Responsibility: Operational backoffice, proposal preparation, and asset control.
 
-6. Casos de Uso e User Stories
+6. Use Cases and User Stories
 
-Dashboard Matinal Web (Assistente Pessoal):
+Morning Web Dashboard (Personal Assistant):
 
-Como usuário, abro a aplicação web pela manhã e vejo um painel unificado gerado pelo Meta-Agente contendo compromissos do dia, PRs pendentes de aprovação e e-mails sumarizados.
+As a user, I open the web application in the morning and see a unified panel generated by the Meta-Agent containing the day's appointments, PRs pending approval, and summarized emails.
 
-Revisão e Aprovação Visual (Human-in-the-Loop):
+Visual Review and Approval (Human-in-the-Loop):
 
-Como arquiteto IoT, faço upload de uma planta baixa no portal web. O agente de Automação processa a imagem e renderiza na tela uma sobreposição interativa com os sensores Zigbee sugeridos, aguardando minha aprovação ou ajuste via drag-and-drop.
+As an IoT architect, I upload a floor plan to the web portal. The Automation agent processes the image and renders an interactive overlay on the screen with the suggested Zigbee sensors, awaiting my approval or adjustment via drag-and-drop.
 
-Evolução Contínua e Criação de Módulos:
+Continuous Evolution and Module Creation:
 
-Como usuário, solicito ao Meta-Agente uma nova integração. Ele codifica a lógica no backend e sugere um novo componente React para o meu painel web.
+As a user, I request a new integration from the Meta-Agent. It codes the logic in the backend and suggests a new React component for my web dashboard.
 
-7. Estratégia de Interface Web e Prototipação (UX/UI & React)
+7. Web Interface Strategy and Prototyping (UX/UI & React)
 
-Para garantir uma experiência de usuário (UX) premium, fluida e escalável, a aplicação web seguirá diretrizes modernas de engenharia de front-end.
+To ensure a premium, fluid, and scalable user experience (UX), the web application will follow modern front-end engineering guidelines.
 
-7.1. Metodologia de Design e Prototipação
+7.1. Design and Prototyping Methodology
 
-Prototipação no Figma: Todas as telas críticas passarão por wireframing e prototipação de alta fidelidade no Figma antes da codificação, garantindo alinhamento visual.
+Figma Prototyping: All critical screens will undergo wireframing and high-fidelity prototyping in Figma before coding, ensuring visual alignment.
 
-Design System Unificado: Adoção de uma biblioteca de componentes robusta (ex: shadcn/ui ou Radix UI) adaptada para um tema coeso (Dark/Light mode automático), garantindo acessibilidade (WCAG 2.1 AA) e consistência.
+Unified Design System: Adoption of a robust component library (e.g., shadcn/ui or Radix UI) adapted for a cohesive theme (automatic Dark/Light mode), ensuring accessibility (WCAG 2.1 AA) and consistency.
 
-Atomic Design: Estruturação da interface em Átomos (botões, inputs), Moléculas (cards de sensores) e Organismos (painéis de plantas baixas), permitindo fácil reutilização pela IA geradora de código.
+Atomic Design: Structuring the interface into Atoms (buttons, inputs), Molecules (sensor cards), and Organisms (floor plan panels), allowing easy reuse by the code-generating AI.
 
-7.2. Arquitetura Frontend (React)
+7.2. Frontend Architecture (React)
 
-Framework Core: React (via Vite ou Next.js) utilizando TypeScript rigoroso para segurança de tipos.
+Core Framework: React (via Vite or Next.js) using rigorous TypeScript for type safety.
 
-Gerenciamento de Estado: Zustand para o estado global do cliente (leve e performático, ideal para dashboards) e React Query / SWR ou assinaturas do Firebase para sincronização de dados do agente em tempo real.
+State Management: Zustand for global client state (lightweight and high-performance, ideal for dashboards) and React Query / SWR or Firebase subscriptions for real-time agent data synchronization.
 
-Estilização: Tailwind CSS para agilidade na criação de layouts responsivos e manutenção simplificada de estilos utilitários.
+Styling: Tailwind CSS for agility in creating responsive layouts and simplified maintenance of utility styles.
 
-Visualização de Dados e Plantas (Canvas): Utilização de bibliotecas como react-konva ou d3.js para renderizar as plantas baixas arquitetônicas de forma interativa (zoom, pan, drag-and-drop de nós IoT).
+Data and Floor Plan Visualization (Canvas): Use of libraries like react-konva or d3.js to render architectural floor plans interactively (zoom, pan, drag-and-drop of IoT nodes).
 
-7.3. Estrutura de Telas Previstas (Views)
+7.3. Expected Screen Structure (Views)
 
-Command Center (Home): Feed de inteligência contendo notificações assíncronas dos agentes, caixa de entrada unificada e barra de comando (Omnibar) para prompts globais.
+Command Center (Home): Intelligence feed containing asynchronous agent notifications, unified inbox, and command bar (Omnibar) for global prompts.
 
-Smart Home Canvas: Tela dedicada ao upload de PDFs/Imagens de plantas, com visualizador 2D interativo das zonas de cobertura de sensores e gerador de BOM (Bill of Materials).
+Smart Home Canvas: Dedicated screen for uploading floor plan PDFs/Images, with an interactive 2D viewer of sensor coverage zones and a BOM (Bill of Materials) generator.
 
-DevOps Board: Visualizador integrado com Jira e GitHub focado no ClinicCare, exibindo status de builds, análises de bugs (IQP) geradas pela IA e diffs de código propostos.
+DevOps Board: Integrated viewer with Jira and GitHub focused on ClinicCare, displaying build status, bug analysis (IQP) generated by AI, and proposed code diffs.
 
-Operations Hub: Gestão de orçamentos da consultoria de TI e relatórios elétricos.
+Operations Hub: IT consultancy budget management and electrical reports.
 
-8. Requisitos Técnicos e Stack (Tech Stack Geral)
+8. Technical Requirements and Stack (General Tech Stack)
 
-Frontend Web: React 18+, TypeScript, Tailwind CSS, shadcn/ui, Zustand.
+Web Frontend: React 18+, TypeScript, Tailwind CSS, shadcn/ui, Zustand.
 
-Framework de Agentes: LangGraph (Python/JS) orquestrando o fluxo e interrupções (Human-in-the-Loop).
+Agent Framework: LangGraph (Python/JS) orchestrating the flow and interruptions (Human-in-the-Loop).
 
-Integração IDE: Model Context Protocol (MCP) para comunicação segura com VS Code.
+IDE Integration: Model Context Protocol (MCP) for secure communication with VS Code.
 
-Cérebros / LLMs: Gemini 2.5 Pro (raciocínio, visão computacional sobre plantas) e LLMs locais (Ollama).
+Brains / LLMs: Gemini 2.5 Pro (reasoning, computer vision over floor plans) and local LLMs (Ollama).
 
-Memória Persistente: PostgreSQL (PostgresSaver) para histórico de sessões do LangGraph.
+Persistent Memory: PostgreSQL (PostgresSaver) for LangGraph session history.
 
-Infraestrutura: Vercel (Frontend) + FastAPI/Node Express (Backend) com WebSocket para streaming de respostas dos agentes para o React.
+Infrastructure: Vercel (Frontend) + FastAPI/Node Express (Backend) with WebSocket for streaming agent responses to React.
 
-9. Marcos e Entregáveis (Milestones)
+9. Milestones and Deliverables (Milestones)
 
-Fase 1: Prototipação e Fundação Core:
+Phase 1: Prototyping and Core Foundation:
 
-Desenho das telas no Figma (Command Center e Smart Home Canvas).
+Design of screens in Figma (Command Center and Smart Home Canvas).
 
-Setup do repositório React + Tailwind e do backend LangGraph com PostgreSQL.
+Setup of React + Tailwind repository and LangGraph backend with PostgreSQL.
 
-Fase 2: MVP da Aplicação Web e Automação:
+Phase 2: Web Application MVP and Automation:
 
-Integração da autenticação e estado global (Zustand).
+Integration of authentication and global state (Zustand).
 
-Lançamento do visualizador de plantas baixas interagindo com o agente multimodal do Gemini.
+Launch of the floor plan viewer interacting with Gemini's multimodal agent.
 
-Fase 3: Integração Profunda (IDE + Web):
+Phase 3: Deep Integration (IDE + Web):
 
-O Agente atua no VS Code (ClinicCare) via MCP e reflete seus diagnósticos e PRs no Web Dashboard.
+The Agent acts in VS Code (ClinicCare) via MCP and reflects its diagnostics and PRs in the Web Dashboard.
 
-Fase 4: Auto-Expansão (Meta-Agente):
+Phase 4: Auto-Expansion (Meta-Agent):
 
-O sistema atinge a capacidade de programar, testar e sugerir novos componentes React para si mesmo na aplicação web, adaptando-se a novas áreas de consultoria.
+The system reaches the capability to program, test, and suggest new React components for itself in the web application, adapting to new areas of consultancy.

@@ -1,53 +1,53 @@
 # GEMINI.md — Personal AI Core (Meta-Instructional Ecosystem)
 
-Este repositório é o "cérebro" e motor de orquestração do **Personal AI Core**, um ecossistema modular de inteligência artificial projetado para atuar como co-piloto profissional em engenharia, TI e gestão pessoal.
+This repository is the "brain" and orchestration engine of the **Personal AI Core**, a modular artificial intelligence ecosystem designed to act as a professional co-pilot in engineering, IT, and personal management.
 
 ---
 
-## 📂 Estrutura do Ecossistema (.agents/)
+## 📂 Ecosystem Structure (.agents/)
 
-A inteligência deste repositório está centralizada na pasta `.agents/`, organizada em três pilares fundamentais:
+The intelligence of this repository is centralized in the `.agents/` folder, organized into three fundamental pillars:
 
 ### 1. Skills (`.agents/skills/`)
-Instruções especializadas por domínio. Antes de executar qualquer tarefa específica (ex: UI Design, Segurança, Diagnóstico), consulte a skill correspondente.
-- **Andru.ia Core:** Skills prefixadas com números (ex: `00-andruia-consultant`) são fundamentais para o diagnóstico e arquitetura de novos projetos. **Idioma Mandatório: ESPAÑOL**.
-- **Specialized Skills:** Abrangem desde `ui-ux-pro-max` até `mcp-builder` e `playwright-skill`.
+Specialized instructions by domain. Before performing any specific task (e.g., UI Design, Security, Diagnostics), consult the corresponding skill.
+- **Andru.ia Core:** Skills prefixed with numbers (e.g., `00-andruia-consultant`) are fundamental for the diagnosis and architecture of new projects. **Mandatory Language: ENGLISH** (Previously Spanish).
+- **Specialized Skills:** Range from `ui-ux-pro-max` to `mcp-builder` and `playwright-skill`.
 
 ### 2. Workflows (`.agents/workflows/`)
-Procedimentos Operacionais Padrão (SOPs) para tarefas multi-etapas.
-- **`/planning`:** Workflow de planejamento SCRUM para épicos e features (ver `planning.workflow.md`).
-- **`/docs`:** Gestão e geração de documentação técnica.
-- **`/rules`:** Gestão e evolução das regras do sistema.
+Standard Operating Procedures (SOPs) for multi-step tasks.
+- **`/planning`:** SCRUM planning workflow for epics and features (see `planning.workflow.md`).
+- **`/docs`:** Management and generation of technical documentation.
+- **`/rules`:** Management and evolution of system rules.
 
 ### 3. Rules (`.agents/rules/`)
-Regras de governança e comportamento global para o agente.
-- **Commits Atômicos:** Obrigatório seguir o `commits.md` (Conventional Commits + Atomicidade Rigorosa).
+Governance and global behavior rules for the agent.
+- **Atomic Commits:** Mandatory to follow `commits.md` (Conventional Commits + Rigorous Atomicity).
 
 ---
 
-## 🛠️ Diretrizes de Desenvolvimento (Conventional & Atomic)
+## 🛠️ Development Guidelines (Conventional & Atomic)
 
-Ao atuar neste repositório ou em projetos derivados:
+When acting in this repository or derivative projects:
 
-1.  **Atomicidade de Commits:** Cada commit deve realizar apenas UMA unidade lógica de alteração. Nunca misture features, fixes e refactorings no mesmo commit.
-2.  **Conventional Commits:** Use `<tipo>[escopo]: <descrição>` (ex: `feat(skill): add new rbac logic`).
-3.  **Linguagem de Contexto:**
-    - O **PRD.md** e **Workflows** utilizam **Português (Brasil)**.
-    - As **Skills Andru.ia** utilizam **Espanhol**.
-    - Identificadores de código e documentação técnica de baixo nível devem ser em **Inglês**.
-
----
-
-## 🚀 Como Iniciar
-
-1.  **Diagnóstico Inicial:** Sempre que o usuário solicitar uma nova ação ou projeto, verifique se a skill `@00-andruia-consultant` (em espanhol) ou o workflow `/planning` (em português) deve ser invocado primeiro.
-2.  **Contexto do Produto:** Leia o `PRD.md` na raiz para entender a visão de longo prazo do **Personal AI Core** e do SaaS **ClinicCare**.
-3.  **Human-in-the-Loop:** Siga as interrupções solicitadas nos workflows para garantir a validação do usuário antes de prosseguir com implementações automáticas.
+1.  **Commit Atomicity:** Each commit must perform only ONE logical unit of change. Never mix features, fixes, and refactorings in the same commit.
+2.  **Conventional Commits:** Use `<type>[scope]: <description>` (e.g., `feat(skill): add new rbac logic`).
+3.  **Context Language:**
+    - All documentation, including **PRD.md**, **Workflows**, and **Skills**, must be in **US English**.
+    - Code identifiers and low-level technical documentation must be in **English**.
+    - UI supports multiple languages via i18n (English, Portuguese, Spanish).
 
 ---
 
-## 🧠 Visão do Meta-Agente (Auto-Evolução)
+## 🚀 How to Start
 
-Conforme descrito no **PRD.md (Seção 5.1)**, este sistema deve ser capaz de evoluir a si mesmo.
-- Se você identificar um padrão repetitivo, sugira a criação de uma nova **Skill** ou **Workflow**.
-- Utilize as regras em `.agents/rules/` para garantir que a evolução do sistema mantenha o padrão de qualidade "Diamante".
+1.  **Initial Diagnosis:** Whenever the user requests a new action or project, check if the skill `@00-andruia-consultant` or the workflow `/planning` should be invoked first.
+2.  **Product Context:** Read the `PRD.md` in the root to understand the long-term vision of the **Personal AI Core** and the **ClinicCare** SaaS.
+3.  **Human-in-the-Loop:** Follow the requested interruptions in the workflows to ensure user validation before proceeding with automatic implementations.
+
+---
+
+## 🧠 Meta-Agent Vision (Auto-Evolution)
+
+As described in the **PRD.md (Section 5.1)**, this system must be capable of evolving itself.
+- If you identify a repetitive pattern, suggest the creation of a new **Skill** or **Workflow**.
+- Use the rules in `.agents/rules/` to ensure the system's evolution maintains the "Diamond" quality standard.

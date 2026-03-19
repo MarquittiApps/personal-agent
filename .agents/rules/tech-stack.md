@@ -1,26 +1,26 @@
 ---
 name: tech-stack
-description: "Define a arquitetura e as tecnologias mandatórias do projeto para evitar alucinações de bibliotecas."
+description: "Defines the mandatory architecture and technologies of the project to avoid library hallucinations."
 ---
 
 # Tech Stack Rules
 
-Sempre que atuar no Personal AI Core, o agente DEVE respeitar a stack tecnológica definida para garantir compatibilidade e manutenibilidade.
+Whenever acting on the Personal AI Core, the agent MUST respect the defined technological stack to ensure compatibility and maintainability.
 
 ## Core Technologies
 - **Backend:** Python 3.12+ (FastAPI).
 - **Frontend:** React 19+ (Vite, TypeScript, Tailwind).
-- **Banco de Dados:** PostgreSQL com extensão `pgvector` (via Docker).
-- **IA Local:** Ollama (Llama 3, Phi-3).
-- **Orquestração de IA:** LangChain / LangGraph.
+- **Database:** PostgreSQL with `pgvector` extension (via Docker).
+- **Local AI:** Ollama (Llama 3, Phi-3).
+- **AI Orchestration:** LangChain / LangGraph.
 
-## Regras de Escolha de Bibliotecas
-1. **Preferência por Nativos:** Sempre prefira bibliotecas padrão do Python ou módulos integrados do React.
-2. **Padrão de Dados:** Utilize `Pydantic v2` para esquemas de dados no backend e `Zod` no frontend.
-3. **ORM/Query Builder:** Utilize o padrão já estabelecido no projeto (Drizzle ou Prisma). **NUNCA** introduza um novo ORM sem consulta prévia.
-4. **Estado no Frontend:** Utilize `Zustand` para estado global simples.
+## Library Choice Rules
+1. **Preference for Natives:** Always prefer standard Python libraries or integrated React modules.
+2. **Data Standard:** Use `Pydantic v2` for data schemas in the backend and `Zod` in the frontend.
+3. **ORM/Query Builder:** Use the standard already established in the project (Drizzle or Prisma). **NEVER** introduce a new ORM without prior consultation.
+4. **State in the Frontend:** Use `Zustand` for simple global state.
 
-## O Que Não Fazer (Don'ts)
-- Não utilize bibliotecas de IA que não sejam LangChain/LangGraph a menos que a Spec peça explicitamente.
-- Não introduza componentes UI fora do `Tailwind CSS`.
-- Não sugira o uso de bancos NoSQL (MongoDB, etc) para dados relacionais.
+## What Not to Do (Don'ts)
+- Do not use AI libraries other than LangChain/LangGraph unless the Spec explicitly asks for it.
+- Do not introduce UI components outside of `Tailwind CSS`.
+- Do not suggest the use of NoSQL databases (MongoDB, etc.) for relational data.

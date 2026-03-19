@@ -100,9 +100,8 @@ We provide a built-in diagnostic script to ensure your environment is correctly 
 This project heavily enforces strict developmental and behavioral rules. Before contributing, read the core rules in **[`GEMINI.md`](./GEMINI.md)**.
 
 ### Language Standard:
-- **PRD & Workflows (`.agents/workflows/`):** Portuguese (Brazil) `pt-BR`.
-- **Specialized Skills (`.agents/skills/`):** Spanish `es`.
-- **Code & Low-Level Technical Docs:** English.
+- **All Source Code, Documentation, & Configs:** English (US).
+- **App UI (i18n):** Supports English (US), Portuguese (Brazil), and Spanish.
 
 ### Commits & Git Flow:
 We strictly follow **Atomic Commits** and **Conventional Commits** (`<type>[scope]: <description>`). Never mix features, fixes, and refactors into a single commit!
