@@ -1,6 +1,7 @@
 import { MainLayout } from './components/layout/MainLayout'
 import { Omnibar } from './components/layout/Omnibar'
 import { SystemDashboard } from './components/dashboard/SystemDashboard'
+import { PlanningDashboard } from './components/dashboard/PlanningDashboard'
 import { ChatMessage } from './components/dashboard/ChatMessage'
 import { useChatStore } from './store/useChatStore'
 import { useSocket } from './lib/useSocket'
@@ -31,6 +32,7 @@ function App() {
         </header>
         
         <SystemDashboard />
+        <PlanningDashboard />
 
         <section className="chat-history mt-12 mb-8 flex-1 overflow-y-auto max-h-[50vh]">
           <div className="flex justify-between items-center mb-4">
