@@ -2,15 +2,20 @@
   "id": "planning-dashboard_20260319",
   "title": "Dashboard de Planejamento 3-Camadas",
   "type": "feature",
-  "status": "in_progress",
+  "status": "done",
   "created": "2026-03-19T11:25:22-03:00",
-  "updated": "2026-03-19T11:25:22-03:00",
+  "updated": "2026-03-19T13:31:00-03:00",
+  "completed": "2026-03-19T13:31:00-03:00",
+  "verification": {
+    "status": "passed",
+    "notes": "Fluxo completo testado manualmente: chat de planejamento → agente pergunta sobre atualização → usuário confirma com 'sim' → agente invoca update_planning_dashboard → backend emite DASHBOARD_UPDATE via WebSocket → frontend recebe e atualiza Zustand → PlanningDashboard re-renderiza sem reload."
+  },
   "phases": {
     "total": 4,
-    "completed": 0
+    "completed": 4
   },
   "tasks": {
     "total": 12,
-    "completed": 0
+    "completed": 12
   }
 }

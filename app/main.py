@@ -67,29 +67,37 @@ async def websocket_endpoint(websocket: WebSocket):
                 elif kind == "on_tool_end":
                     if event.get("name") == "update_planning_dashboard":
                         tool_output = event.get("data", {}).get("output")
-                        print(f"DEBUG: update_planning_dashboard terminou. Tipo: {type(tool_output)}")
+                        print(f"DEBUG: update_planning_dashboard terminou. Tipo: {type(tool_output)}, Valor: {repr(tool_output)}")
                         output_dict = None
                         
-                        if hasattr(tool_output, "content"):
-                            content_str = tool_output.content
-                        elif isinstance(tool_output, str):
-                            content_str = tool_output
-                        elif isinstance(tool_output, dict):
+                        if isinstance(tool_output, dict):
+                            # Caso ideal: já é dict
                             output_dict = tool_output
-                            content_str = ""
                         else:
-                            content_str = str(tool_output)
+                            # Tira o content do ToolMessage, se for um
+                            if hasattr(tool_output, "content"):
+                                content_str = tool_output.content
+                            elif isinstance(tool_output, str):
+                                content_str = tool_output
+                            else:
+                                content_str = str(tool_output)
                             
-                        if not output_dict and content_str:
+                            print(f"DEBUG: content_str = {repr(content_str)}")
+                            
+                            # Tenta json.loads primeiro (JSON padrão com aspas duplas)
+                            import json as _json
+                            import ast
                             try:
-                                import ast
-                                # ast.literal_eval é mais seguro para parsear strings em dicts originados de retornos Python (' em vez de ")
-                                output_dict = ast.literal_eval(content_str)
-                            except Exception as e:
-                                print(f"DEBUG Error parsing tool output: {e}")
-                                
+                                output_dict = _json.loads(content_str)
+                            except Exception:
+                                try:
+                                    # fallback: ast.literal_eval para dict Python com aspas simples
+                                    output_dict = ast.literal_eval(content_str)
+                                except Exception as e:
+                                    print(f"DEBUG Error parsing tool output: {e}")
+                                    
                         if isinstance(output_dict, dict) and output_dict.get("type") == "DASHBOARD_UPDATE":
-                            print("DEBUG: Disparando DASHBOARD_UPDATE no WebSocket")
+                            print(f"DEBUG: Disparando DASHBOARD_UPDATE no WebSocket: {output_dict}")
                             await websocket.send_json(output_dict)
                         else:
                             print(f"DEBUG: Não foi possível emitir o evento. Resolvido como: {output_dict}")

@@ -40,7 +40,12 @@ export const useSocket = () => {
           break;
           
         case 'DASHBOARD_UPDATE':
-          usePlanningStore.getState().syncPlanning(data.data);
+          console.log('[DASHBOARD_UPDATE] payload recebido:', JSON.stringify(data, null, 2));
+          console.log('[DASHBOARD_UPDATE] data.data:', data.data);
+          if (data.data) {
+            usePlanningStore.getState().syncPlanning(data.data);
+            console.log('[DASHBOARD_UPDATE] store após sync:', usePlanningStore.getState());
+          }
           addMessage('assistant', '\n\n✅ *Dashboard de planejamento atualizado com sucesso.*');
           break;
 

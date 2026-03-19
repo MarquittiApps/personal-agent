@@ -34,11 +34,11 @@ This file tracks all major tracks for the project. Each track has its own detail
 
 ---
 
-- [~] **Track: Dashboard de Planejamento 3-Camadas**
+- [x] **Track: Dashboard de Planejamento 3-Camadas** ✅ *Verificado e funcional — fluxo WebSocket/Zustand testado com sucesso*
   *Link: [./tracks/planning-dashboard_20260319/](./tracks/planning-dashboard_20260319/)*
 
 ---
 
-- [ ] **Track: Base de Conhecimento RAG & Catálogos (EP-08)**
+- [~] **Track: Base de Conhecimento RAG & Catálogos (EP-08)**
   *Link: [./tracks/rag-engine_20260319/](./tracks/rag-engine_20260319/)*
 
