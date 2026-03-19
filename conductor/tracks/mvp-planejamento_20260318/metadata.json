@@ -1,0 +1,18 @@
+{
+  "id": "mvp-planejamento_20260318",
+  "title": "MVP Planejamento Diário com IA",
+  "type": "feature",
+  "status": "in_progress",
+  "created": "2026-03-18T23:03:15Z",
+  "updated": "2026-03-18T23:06:59Z",
+  "current_phase": 1,
+  "current_task": "1.2",
+  "phases": {
+    "total": 3,
+    "completed": 0
+  },
+  "tasks": {
+    "total": 9,
+    "completed": 1
+  }
+}

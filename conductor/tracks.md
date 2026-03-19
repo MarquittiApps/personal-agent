@@ -26,3 +26,8 @@ This file tracks all major tracks for the project. Each track has its own detail
 
 - [x] **Track: Integração Omnibar & LLM Chat (WebSocket Streaming)**
 *Link: [./tracks/chat-integration_20260318/](./tracks/chat-integration_20260318/)*
+
+---
+
+- [~] **Track: MVP Planejamento Diário com IA**
+*Link: [./tracks/mvp-planejamento_20260318/](./tracks/mvp-planejamento_20260318/)*
