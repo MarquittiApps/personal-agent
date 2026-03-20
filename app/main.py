@@ -5,6 +5,7 @@ from app.api.auth import router as auth_router
 from app.api.v1.endpoints.knowledge import router as knowledge_router
 from app.api.v1.endpoints.meta import router as meta_router
 from app.api.v1.endpoints.finance import router as finance_router
+from app.api.v1.endpoints.email import router as email_router
 import asyncio
 
 app = FastAPI(title="Personal AI Core API")
@@ -14,6 +15,7 @@ app.include_router(auth_router)
 app.include_router(knowledge_router, prefix="/api/v1")
 app.include_router(meta_router, prefix="/api/v1")
 app.include_router(finance_router, prefix="/api/v1/finance")
+app.include_router(email_router, prefix="/api/v1")
 
 # Compila o grafo globalmente (Lazy Loading)
 _graph = None

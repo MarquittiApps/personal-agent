@@ -18,7 +18,8 @@ REDIRECT_URI = os.getenv("GOOGLE_REDIRECT_URI", "http://localhost:8000/auth/goog
 # Scopes necessários para Calendar e Tasks e informações de usuário se necessário
 SCOPES = [
     'https://www.googleapis.com/auth/calendar',
-    'https://www.googleapis.com/auth/tasks'
+    'https://www.googleapis.com/auth/tasks',
+    'https://www.googleapis.com/auth/gmail.readonly'
 ]
 
 def get_client_config():

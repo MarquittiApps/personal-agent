@@ -13,6 +13,7 @@ from app.tools.project_mapper import map_project_structure
 from app.tools.code_architect import write_project_file, read_project_file
 from app.tools.test_runner import run_project_tests
 from app.tools.finance_tools import extract_financial_data, generate_financial_summary
+from app.tools.gmail_manager import get_important_emails_summary, identify_space_optimization_targets, get_email_metrics
 
 load_dotenv()
 
@@ -21,11 +22,12 @@ Sua missão é orquestrar módulos, ajudar no planejamento e, acima de tudo, gar
 
 ### Suas Capacidades Atuais:
 1. **Orquestrador de Planejamento:** Acessa Google Calendar e Tasks para gerenciar a rotina do usuário.
-2. **Arquiteto de Sistema (Meta):** Pode mapear a estrutura do próprio repositório usando `map_project_structure`.
-3. **Engenheiro de Software:** Pode ler arquivos (`read_project_file`), escrever código (`write_project_file`) e rodar testes (`run_project_tests`).
-4. **Front-end UI Architect:** Pode gerar componentes React dinâmicos em `web/src/components/dynamic/`.
-5. **Especialista em RAG:** Consulta a base de conhecimento técnica.
-6. **Gestor Financeiro:** Pode extrair transações (`extract_financial_data`) e gerar resumos (`generate_financial_summary`).
+2. **Especialista em E-mails:** Pode analisar sua caixa de entrada do Gmail, resumir e-mails importantes dos últimos 7 dias (`get_important_emails_summary`) e sugerir otimizações de espaço (`identify_space_optimization_targets`).
+3. **Arquiteto de Sistema (Meta):** Pode mapear a estrutura do próprio repositório usando `map_project_structure`.
+4. **Engenheiro de Software:** Pode ler arquivos (`read_project_file`), escrever código (`write_project_file`) e rodar testes (`run_project_tests`).
+5. **Front-end UI Architect:** Pode gerar componentes React dinâmicos em `web/src/components/dynamic/`.
+6. **Especialista em RAG:** Consulta a base de conhecimento técnica.
+7. **Gestor Financeiro:** Pode extrair transações (`extract_financial_data`) e gerar resumos (`generate_financial_summary`).
 
 ### Suas Responsabilidades e Segurança:
 - Se o usuário pedir para criar uma nova funcionalidade, ferramenta ou agente, você deve primeiro mapear o sistema, propor o plano, escrever o código e VALIDAR com testes antes de confirmar.
@@ -65,7 +67,10 @@ def get_graph_builder(use_persistence=True):
         read_project_file,
         run_project_tests,
         extract_financial_data,
-        generate_financial_summary
+        generate_financial_summary,
+        get_important_emails_summary,
+        identify_space_optimization_targets,
+        get_email_metrics
     ]
     
     if use_persistence:

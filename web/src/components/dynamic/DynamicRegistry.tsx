@@ -6,10 +6,12 @@
 
 // Import dynamic components here
 import { FinanceDashboard } from './FinanceDashboard';
+import { EmailDashboard } from './EmailDashboard';
 
 export const DynamicRegistry: Record<string, React.ComponentType<any>> = {
   // Add component mappings here
   'FinanceDashboard': FinanceDashboard,
+  'EmailDashboard': EmailDashboard,
 };
 
 export type DynamicComponentType = keyof typeof DynamicRegistry;

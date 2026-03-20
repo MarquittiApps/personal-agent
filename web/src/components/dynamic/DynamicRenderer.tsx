@@ -1,5 +1,6 @@
 import React from 'react';
-import { DynamicRegistry, DynamicComponentType } from './DynamicRegistry';
+import { DynamicRegistry } from './DynamicRegistry';
+import type { DynamicComponentType } from './DynamicRegistry';
 
 interface DynamicRendererProps {
   type: string;

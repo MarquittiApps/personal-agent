@@ -2,6 +2,7 @@ import { MainLayout } from './components/layout/MainLayout'
 import { Omnibar } from './components/layout/Omnibar'
 import { SystemDashboard } from './components/dashboard/SystemDashboard'
 import { PlanningDashboard } from './components/dashboard/PlanningDashboard'
+import { DynamicRenderer } from './components/dynamic/DynamicRenderer'
 import { HardwareCatalog } from './components/dashboard/HardwareCatalog'
 import { KnowledgeUpload } from './components/dashboard/KnowledgeUpload'
 import { ChatMessage } from './components/dashboard/ChatMessage'
@@ -35,6 +36,10 @@ function App() {
         
         <SystemDashboard />
         <PlanningDashboard />
+
+        <div className="mb-8">
+          <DynamicRenderer type="EmailDashboard" />
+        </div>
 
         <div className="flex flex-col lg:flex-row gap-8">
           <div className="flex-1">
