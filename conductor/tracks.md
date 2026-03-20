@@ -47,3 +47,8 @@ This file tracks all major tracks for the project. Each track has its own detail
 - [ ] **Track: Integração com Modelos LLM Locais (Ollama) (EP-01)**
   *Link: [./tracks/llm-local-ollama_20260319/](./tracks/llm-local-ollama_20260319/)*
 
+---
+
+- [x] **Track: Meta-Agent (Self-Evolution) (EP-06)** ✅ *Sistema agora é capaz de mapear o código, escrever ferramentas, rodar testes e gerar componentes UI.*
+  *Link: [./tracks/meta-agent_20260319/](./tracks/meta-agent_20260319/)*
+

@@ -3,13 +3,15 @@ from fastapi import FastAPI, WebSocket, WebSocketDisconnect
 from app.core.graph import compile_graph
 from app.api.auth import router as auth_router
 from app.api.v1.endpoints.knowledge import router as knowledge_router
+from app.api.v1.endpoints.meta import router as meta_router
 import asyncio
 
 app = FastAPI(title="Personal AI Core API")
 
-# Inclui rotas de Autenticação OAuth2
+# Inclui rotas
 app.include_router(auth_router)
 app.include_router(knowledge_router, prefix="/api/v1")
+app.include_router(meta_router, prefix="/api/v1")
 
 # Compila o grafo globalmente
 graph = compile_graph(use_persistence=False) # Simplificado para o setup inicial
