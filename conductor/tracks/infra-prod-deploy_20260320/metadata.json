@@ -1,0 +1,8 @@
+{
+  "track_id": "infra-prod-deploy_20260320",
+  "type": "feature",
+  "status": "new",
+  "created_at": "2026-03-20T12:00:00Z",
+  "updated_at": "2026-03-20T12:00:00Z",
+  "description": "Infraestrutura de Produção e Ciclo de Deploy (v2.0) - Zero-Trust, Cloud Run, Firebase Hosting e Supabase."
+}
