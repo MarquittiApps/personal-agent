@@ -1,5 +1,5 @@
 from fastapi import APIRouter, HTTPException, Depends
-from typing import List
+from typing import List, Optional
 from app.models.finance import (
     Account, AccountCreate, Transaction, TransactionCreate,
     Category, CategoryCreate
