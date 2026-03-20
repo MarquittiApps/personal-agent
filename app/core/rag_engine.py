@@ -7,8 +7,14 @@ from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_google_genai import GoogleGenerativeAIEmbeddings
 from app.core.database import get_db_connection
 
-# Configuração de Embeddings
-embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001")
+# Configuração de Embeddings (Lazy Loading)
+_embeddings = None
+
+def get_embeddings():
+    global _embeddings
+    if _embeddings is None:
+        _embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001")
+    return _embeddings
 
 def update_knowledge_base(file_path: str, metadata: Optional[Dict[str, Any]] = None):
     """
@@ -36,7 +42,7 @@ def update_knowledge_base(file_path: str, metadata: Optional[Dict[str, Any]] = N
         for chunk in chunks:
             content = chunk.page_content
             # Gera embedding
-            vector = embeddings.embed_query(content)
+            vector = get_embeddings().embed_query(content)
 
             # Merge metadata
             final_metadata = chunk.metadata.copy()
@@ -67,7 +73,7 @@ def query_knowledge_base(query: str, top_k: int = 5):
     """
     try:
         # 1. Gera embedding da query
-        query_vector = embeddings.embed_query(query)
+        query_vector = get_embeddings().embed_query(query)
 
         # 2. Busca no Postgres usando pgvector (cosine similarity)
         conn = get_db_connection()

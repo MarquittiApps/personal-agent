@@ -15,8 +15,15 @@ app.include_router(knowledge_router, prefix="/api/v1")
 app.include_router(meta_router, prefix="/api/v1")
 app.include_router(finance_router, prefix="/api/v1/finance")
 
-# Compila o grafo globalmente
-graph = compile_graph(use_persistence=False) # Simplificado para o setup inicial
+# Compila o grafo globalmente (Lazy Loading)
+_graph = None
+
+def get_graph():
+    global _graph
+    if _graph is None:
+        from app.core.graph import compile_graph
+        _graph = compile_graph(use_persistence=False)
+    return _graph
 
 @app.websocket("/ws/chat")
 async def websocket_endpoint(websocket: WebSocket):
@@ -40,7 +47,7 @@ async def websocket_endpoint(websocket: WebSocket):
 
             # Executa o grafo e faz o stream das respostas
             # Nota: LangGraph suporte nativo a stream de eventos
-            async for event in graph.astream_events(initial_state, version="v2"):
+            async for event in get_graph().astream_events(initial_state, version="v2"):
                 kind = event["event"]
                 
                 # Stream de tokens (on_chat_model_stream)
