@@ -15,15 +15,15 @@ Estabelecer a infraestrutura de produção escalável e segura (Zero-Trust) para
 ## Phase 1: Segurança e Identidade (Workload Identity Federation)
 Configurar a conexão segura entre GitHub e Google Cloud Platform sem o uso de chaves Service Account JSON.
 
-- [ ] Task: Criar Guia de Configuração `docs/deploy/setup-wif.md` (Comandos GCP CLI).
-- [ ] Task: Definir segredos no GitHub Actions (`GCP_PROJECT_ID`, `GCP_WIF_PROVIDER`).
-- [ ] Task: Testar autenticação básica em um workflow de teste (`test-auth.yml`).
+- [x] Task: Criar Guia de Configuração `docs/deploy/setup-wif.md` (Comandos GCP CLI).
+- [x] Task: Definir segredos no GitHub Actions (`GCP_PROJECT_ID`, `GCP_WIF_PROVIDER`).
+- [x] Task: Testar autenticação básica em um workflow de teste (`test-auth.yml`).
 - [ ] Task: Conductor - User Manual Verification 'Phase 1: Setup e Segurança'
 
 ## Phase 2: Dockerização e Pipeline de Backend (Cloud Run)
 Criar imagem Docker multi-stage otimizada e configurar deploy automático.
 
-- [ ] Task: Criar `backend.Dockerfile` (Multi-stage build, python:3.11-slim, usuário não-root).
+- [x] Task: Criar `backend.Dockerfile` (Multi-stage build, python:3.11-slim, usuário não-root).
 - [ ] Task: Criar workflow `.github/workflows/deploy-backend.yml` (Build, Scan, Push, Deploy).
 - [ ] Task: Integrar GCP Secret Manager no Cloud Run para injeção de `GOOGLE_API_KEY`.
 - [ ] Task: Configurar *Startup CPU Boost* e limites de memória/CPU no deploy.
