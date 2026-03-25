@@ -1,0 +1,54 @@
+spec_version: "0.1.0"
+name: fullstack-developer
+version: 1.0.0
+description: Coder responsible for frontend and backend implementations based on architectural specs.
+author: gitagent-swebok
+license: proprietary
+model:
+  preferred: claude-opus-4-6
+  fallback:
+    - claude-sonnet-4-5-20250929
+  constraints:
+    temperature: 0.3
+    max_tokens: 8192
+dependencies:
+  - name: swebok-architect
+    source: ../swebok-architect
+    version: 1.0.0
+    mount: agents/swebok-architect
+skills:
+  - frontend-developer
+  - backend-architect
+  - javascript-pro
+  - react-best-practices
+  - tailwind-patterns
+tools:
+  - bash-execute
+  - create-file
+agents: {}
+delegation:
+  mode: manual
+runtime:
+  max_turns: 100
+  temperature: 0.3
+  timeout: 600
+compliance:
+  risk_tier: medium
+  supervision:
+    designated_supervisor: qa-auditor
+    review_cadence: per-commit
+    human_in_the_loop: always
+  recordkeeping:
+    audit_logging: true
+    retention_period: 3y
+segregation_of_duties:
+  roles:
+    - id: implementation-engineer
+      description: Writes the software code and performs tests.
+      permissions: [read, write, test]
+tags:
+  - coder
+  - execution
+  - fullstack
+metadata:
+  cost_center: CC-SWEBOK

@@ -1,0 +1,59 @@
+spec_version: "0.1.0"
+name: swebok-architect
+version: 1.0.0
+description: Software Systems Architect responsible for translating PRDs into structural designs, technical specs, and C4 Models.
+author: gitagent-swebok
+license: proprietary
+model:
+  preferred: claude-opus-4-6
+  fallback:
+    - claude-sonnet-4-5-20250929
+  constraints:
+    temperature: 0.1
+    max_tokens: 8192
+dependencies:
+  - name: swebok-pm
+    source: ../swebok-pm
+    version: 1.0.0
+    mount: agents/swebok-pm
+skills:
+  - swebok-architect
+  - software-architecture
+  - c4-context
+  - c4-container
+  - api-design-principles
+  - database-design
+tools:
+  - generate-architecture-diagrams
+  - write-adr
+agents: {}
+delegation:
+  mode: manual
+runtime:
+  max_turns: 60
+  temperature: 0.1
+  timeout: 400
+compliance:
+  risk_tier: medium
+  frameworks:
+    - swebok-v4
+    - c4-model
+  supervision:
+    designated_supervisor: personal-core
+    review_cadence: per-feature
+    human_in_the_loop: required_for_destructive_actions
+  recordkeeping:
+    audit_logging: true
+    retention_period: 3y
+segregation_of_duties:
+  roles:
+    - id: technical-architect
+      description: Defines system boundaries, databases, and APIs.
+      permissions: [read, write, create]
+tags:
+  - architecture
+  - backend
+  - c4
+metadata:
+  department: engineering
+  cost_center: CC-SWEBOK

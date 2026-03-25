@@ -1,0 +1,102 @@
+spec_version: "0.1.0"
+name: personal-core
+version: 1.0.0
+description: Core orchestrator agent for the Personal AI Core ecosystem. Routes intents, delegates tasks to sub-agents, and maintains global context.
+author: gitagent-core
+license: proprietary
+model:
+  preferred: claude-opus-4-6
+  fallback:
+    - claude-sonnet-4-5-20250929
+  constraints:
+    temperature: 0.1
+    max_tokens: 8192
+dependencies:
+  - name: swebok-pm
+    source: ./swebok-pm
+    version: 1.0.0
+    mount: agents/swebok-pm
+  - name: swebok-architect
+    source: ./swebok-architect
+    version: 1.0.0
+    mount: agents/swebok-architect
+  - name: fullstack-developer
+    source: ./fullstack-developer
+    version: 1.0.0
+    mount: agents/fullstack-developer
+  - name: qa-auditor
+    source: ./qa-auditor
+    version: 1.0.0
+    mount: agents/qa-auditor
+skills:
+  - orchestrate-workflow
+  - intent-routing
+  - context-management
+tools:
+  - create-subagent-task
+  - query-global-memory
+agents:
+  swebok-pm:
+    description: Product manager answering for requirement gatherings and specs.
+    delegation:
+      mode: auto
+      triggers:
+        - feature_request
+        - epic_planning
+  swebok-architect:
+    description: Solutions architect answering for technical designs.
+    delegation:
+      mode: auto
+      triggers:
+        - architectural_decision
+        - system_design
+  fullstack-developer:
+    description: Coder responsible for frontend and backend implementations.
+    delegation:
+      mode: auto
+      triggers:
+        - code_implementation
+        - feature_development
+  qa-auditor:
+    description: Quality assurance ensuring SWEBOK compliance and test correctness.
+    delegation:
+      mode: auto
+      triggers:
+        - code_review
+        - security_audit
+delegation:
+  mode: auto
+runtime:
+  max_turns: 100
+  temperature: 0.1
+  timeout: 600
+compliance:
+  risk_tier: medium
+  supervision:
+    designated_supervisor: user
+    review_cadence: ad-hoc
+    human_in_the_loop: required_for_destructive_actions
+  recordkeeping:
+    audit_logging: true
+    retention_period: 1y
+segregation_of_duties:
+  roles:
+    - id: orchestrator
+      description: Routes tasks and defines goals
+      permissions: [read, schedule]
+    - id: executor
+      description: Performs requested tasks
+      permissions: [read, write, commit]
+  assignments:
+    personal-core: [orchestrator]
+    swebok-pm: [executor]
+    swebok-architect: [executor]
+    fullstack-developer: [executor]
+    qa-auditor: [executor]
+tags:
+  - orchestrator
+  - router
+  - core-system
+metadata:
+  repository: personal-agent
+  ecosystem: personal-ai-core
